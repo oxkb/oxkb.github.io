@@ -131,7 +131,7 @@
         }
 
         .keyboard-notice {
-            margin-top: 20px;
+            margin-bottom: 20px; /* Adjusted margin to be above the main layout */
             padding: 15px;
             background-color: #e6f7ff;
             border: 1px solid #91d5ff;
@@ -244,28 +244,9 @@
 
     <h1>Online Amharic Keyboard (የአማርኛ ኪቦርድ)</h1>
 
-    <div class="main-layout">
-        <div id="keyboard-container">
-            <div id="variation-keys" class="keyboard-row">
-            </div>
-            <div id="base-keys" class="keyboard-row">
-            </div>
-            <div id="punctuation-keys" class="keyboard-row">
-            </div>
-            <div id="symbol-emoji-keys" class="keyboard-row">
-            </div>
-            <div id="number-keys" class="keyboard-row">
-            </div>
-            <div id="special-keys" class="keyboard-row">
-            </div>
-        </div>
-
-        <textarea id="output" rows="8" placeholder="Type Amharic here..."></textarea>
-    </div>
-
     <div class="keyboard-notice">
         <h2>How to Type Amharic with Your Physical Keyboard:</h2>
-        <p>This keyboard allows you to type Amharic characters using a phonetic approach. Press a **base consonant key** (e.g., 'l' for ለ) followed by a **vowel key** to get the desired Fidel. If you pause after a consonant, you'll get the 6th form (e.g., 'l' for ል).</p>
+        <p>This keyboard allows you to type Amharic characters using a **phonetic approach**. Press a **base consonant key** (e.g., 'l' for ለ) followed by a **vowel key** to get the desired Fidel. If you pause after a consonant, you'll get the 6th form (e.g., 'l' for ል).</p>
         <p>Here are some examples for the 'ለ' family:</p>
         <ul>
             <li>**le** = ለ</li>
@@ -287,6 +268,25 @@
             <li>**,** = ፣ (Amharic comma)</li>
             <li>**!** (Shift+1) = ፩ (Amharic numeral one)</li>
         </ul>
+    </div>
+
+    <div class="main-layout">
+        <div id="keyboard-container">
+            <div id="variation-keys" class="keyboard-row">
+            </div>
+            <div id="base-keys" class="keyboard-row">
+            </div>
+            <div id="punctuation-keys" class="keyboard-row">
+            </div>
+            <div id="symbol-emoji-keys" class="keyboard-row">
+            </div>
+            <div id="number-keys" class="keyboard-row">
+            </div>
+            <div id="special-keys" class="keyboard-row">
+            </div>
+        </div>
+
+        <textarea id="output" rows="8" placeholder="Type Amharic here..."></textarea>
     </div>
 
     <script>
