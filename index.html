@@ -130,53 +130,26 @@
             display: none;
         }
 
-        .keyboard-notice {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #e6f7ff;
-            border: 1px solid #91d5ff;
-            border-radius: 8px;
-            width: 95%;
-            max-width: 1200px;
-            font-size: 1.1em;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .keyboard-notice h2 {
-            margin-top: 0;
-            color: #0056b3;
-            font-size: 1.3em;
-        }
-
-        .keyboard-notice ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 10px 0 0 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 8px;
-        }
-
-        .keyboard-notice li {
-            background-color: #f0faff;
-            padding: 5px 10px;
-            border-radius: 4px;
-            border: 1px solid #bae7ff;
-            text-align: center;
-        }
-
-        .quick-tip {
+        .keyboard-info {
             width: 95%;
             max-width: 1200px;
             margin-top: 15px;
-            text-align: center;
-            font-size: 0.95em;
-            color: #555;
-            background-color: #f0f0f0;
+            text-align: left;
+            font-size: 0.9em; /* Small font */
+            color: #333;
+            background-color: #fffacd; /* Yellow background */
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #ddd;
+            border: 1px solid #e0c240;
+            line-height: 1.4;
+        }
+        .keyboard-info strong {
+            font-weight: bold;
+        }
+        .keyboard-info span {
+            display: inline-block;
+            margin-right: 15px;
+            white-space: nowrap; /* Keep items on one line if space allows */
         }
 
 
@@ -224,20 +197,13 @@
                 flex-grow: 3;
             }
 
-            .keyboard-notice {
-                font-size: 1em;
-                padding: 10px;
-                width: 100%;
-            }
-
-            .keyboard-notice ul {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            }
-
-            .quick-tip {
-                font-size: 0.9em;
+            .keyboard-info {
+                font-size: 0.85em; /* Smaller font on small screens */
                 padding: 8px;
                 width: 100%;
+            }
+            .keyboard-info span {
+                margin-right: 10px;
             }
         }
 
@@ -254,12 +220,13 @@
                 min-height: 120px;
                 font-size: 1.2em;
             }
-             .keyboard-notice ul {
-                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-            }
-            .quick-tip {
-                font-size: 0.85em;
+            .keyboard-info {
+                font-size: 0.8em; /* Even smaller font on very small screens */
                 padding: 6px;
+            }
+            .keyboard-info span {
+                display: block; /* Stack items on very small screens */
+                margin-right: 0;
             }
         }
     </style>
@@ -287,34 +254,24 @@
         <textarea id="output" rows="8" placeholder="Type Amharic here..."></textarea>
     </div>
 
-    <div class="quick-tip">
-        **How to use with your physical keyboard:** Type "le = ለ", "lu = ሉ", "li = ሊ", "la = ላ", "ly = ሌ", "l = ል", "lo = ሎ".
-    </div>
-
-    <div class="keyboard-notice">
-        <h2>How to Type Amharic with Your Physical Keyboard:</h2>
-        <p>This keyboard allows you to type Amharic characters using a phonetic approach. Press a **base consonant key** (e.g., 'l' for ለ) followed by a **vowel key** to get the desired Fidel. If you pause after a consonant, you'll get the 6th form (e.g., 'l' for ል).</p>
-        <p>Here are some examples for the 'ለ' family:</p>
-        <ul>
-            <li>**le** = ለ</li>
-            <li>**lu** = ሉ</li>
-            <li>**li** = ሊ</li>
-            <li>**la** = ላ</li>
-            <li>**ly** = ሌ</li>
-            <li>**l** (then pause) = ል</li>
-            <li>**lo** = ሎ</li>
-            <li>**lwa** = ሏ</li>
-        </ul>
-        <p>Other useful mappings:</p>
-        <ul>
-            <li>**X** (Shift+x) = ሸ</li>
-            <li>**V** (Shift+v) = ኀ</li>
-            <li>**Y** (Shift+y) = የ</li>
-            <li>**~** (Tilde) = ጸ</li>
-            <li>**.** = ። (Amharic period)</li>
-            <li>**,** = ፣ (Amharic comma)</li>
-            <li>**!** (Shift+1) = ፩ (Amharic numeral one)</li>
-        </ul>
+    <div class="keyboard-info">
+        Type with your physical keyboard, using a phonetic approach:
+        <span>**le** = ለ</span>
+        <span>**lu** = ሉ</span>
+        <span>**li** = ሊ</span>
+        <span>**la** = ላ</span>
+        <span>**ly** = ሌ</span>
+        <span>**l** = ል</span> (If you pause after a consonant, you'll get the 6th form)
+        <span>**lo** = ሎ</span>
+        <span>**lwa** = ሏ</span>
+        <br>
+        <span>**Shift+x** = ሸ</span>
+        <span>**Shift+v** = ኀ</span>
+        <span>**Shift+y** = የ</span>
+        <span>**Shift+~** = ጸ</span>
+        <span>**Shift+1** = ፩</span>
+        <span>**.** = ።</span>
+        <span>**,** = ፣</span>
     </div>
 
     <script>
