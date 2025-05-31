@@ -130,29 +130,6 @@
             display: none;
         }
 
-        .keyboard-info {
-            width: 95%;
-            max-width: 1200px;
-            margin-top: 15px;
-            text-align: left;
-            font-size: 0.9em; /* Small font */
-            color: #333;
-            background-color: #fffacd; /* Yellow background */
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #e0c240;
-            line-height: 1.4;
-        }
-        .keyboard-info strong {
-            font-weight: bold;
-        }
-        .keyboard-info span {
-            display: inline-block;
-            margin-right: 15px;
-            white-space: nowrap; /* Keep items on one line if space allows */
-        }
-
-
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -196,15 +173,6 @@
             .key-space {
                 flex-grow: 3;
             }
-
-            .keyboard-info {
-                font-size: 0.85em; /* Smaller font on small screens */
-                padding: 8px;
-                width: 100%;
-            }
-            .keyboard-info span {
-                margin-right: 10px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -219,14 +187,6 @@
             textarea {
                 min-height: 120px;
                 font-size: 1.2em;
-            }
-            .keyboard-info {
-                font-size: 0.8em; /* Even smaller font on very small screens */
-                padding: 6px;
-            }
-            .keyboard-info span {
-                display: block; /* Stack items on very small screens */
-                margin-right: 0;
             }
         }
     </style>
@@ -252,27 +212,7 @@
         </div>
 
         <textarea id="output" rows="8" placeholder="Type Amharic here..."></textarea>
-    </div>
-
-    <div class="keyboard-info">
-        Type with your physical keyboard, using a phonetic approach:
-        <span>**le** = ለ</span>
-        <span>**lu** = ሉ</span>
-        <span>**li** = ሊ</span>
-        <span>**la** = ላ</span>
-        <span>**ly** = ሌ</span>
-        <span>**l** = ል</span> (If you pause after a consonant, you'll get the 6th form)
-        <span>**lo** = ሎ</span>
-        <span>**lwa** = ሏ</span>
-        <br>
-        <span>**Shift+x** = ሸ</span>
-        <span>**Shift+v** = ኀ</span>
-        <span>**Shift+y** = የ</span>
-        <span>**Shift+~** = ጸ</span>
-        <span>**Shift+1** = ፩</span>
-        <span>**.** = ።</span>
-        <span>**,** = ፣</span>
-    </div>
+        </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
