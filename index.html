@@ -3,24 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily</title>
     <meta name="description" content="A free and easy-to-use online Amharic keyboard (Fidel keyboard) to type Amharic letters and characters directly in your browser. Supports physical keyboard input.">
     <meta name="keywords" content="Amharic keyboard, online Amharic keyboard, Fidel keyboard, type Amharic, አማርኛ ኪቦርድ, Ethiopian keyboard, Geez keyboard, free Amharic typing">
     <meta name="author" content="Ahmedhaji Sadik Umer">
-
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://amkb.vercel.app/">
     <meta property="og:title" content="Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily">
     <meta property="og:description" content="Free online Amharic Fidel keyboard for easy typing in your browser.">
-
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://amkb.vercel.app/">
     <meta property="twitter:title" content="Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily">
     <meta property="twitter:description" content="Free online Amharic Fidel keyboard for easy typing in your browser.">
-
     <meta name="google-site-verification" content="YOykyV7jEUg5Nj2GeyhHUcewf9WW-Ruyke1v23KePrY" />
-
     <style>
         body {
             font-family: 'Noto Sans Ethiopic', 'Nyala', sans-serif;
@@ -32,14 +27,12 @@
             min-height: 100vh;
             box-sizing: border-box;
         }
-
         h1 {
             color: #333;
             margin-bottom: 20px;
             text-align: center;
             margin-top: 0
         }
-
         .main-layout {
             display: flex;
             flex-direction: row;
@@ -49,7 +42,6 @@
             align-items: flex-start;
             margin: 0 auto;
         }
-
         #keyboard-container {
             background-color: #e0e0e0;
             padding: 15px;
@@ -62,7 +54,6 @@
             max-width: 600px;
             align-self: stretch;
         }
-
         textarea {
             padding: 15px;
             font-size: 1.5em;
@@ -70,11 +61,9 @@
             border-radius: 5px;
             font-family: inherit;
             flex: 1 1 45%;
-
             min-height: 200px;
             box-sizing: border-box;
         }
-
         .keyboard-row {
             display: flex;
             justify-content: center;
@@ -82,7 +71,6 @@
             gap: 5px;
             min-height: 45px;
         }
-
         .key {
             padding: 10px 15px;
             font-size: 1.2em;
@@ -97,39 +85,31 @@
             font-family: inherit;
             user-select: none;
         }
-
         .key:hover {
             background-color: #f0f0f0;
         }
-
         .key:active {
             background-color: #dcdcdc;
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
         }
-
         .key-special {
             padding: 10px 20px;
         }
-
         .key-space {
             flex-grow: 4;
         }
-
         .key-backspace {
             flex-grow: 1;
         }
-
         #variation-keys:not(:empty) {
             background-color: #f8f8f8;
             padding: 5px;
             border-radius: 5px;
             margin-bottom: 5px;
         }
-
         #variation-keys:empty {
             display: none;
         }
-
         .keyboard-info {
             width: 95%;
             max-width: 1200px;
@@ -151,25 +131,20 @@
             margin-right: 15px;
             white-space: nowrap; /* Keep items on one line if space allows */
         }
-
-
         @media (max-width: 768px) {
             body {
                 padding: 10px;
             }
-
             h1 {
                 font-size: 1.5em;
                 margin-bottom: 15px;
             }
-
             .main-layout {
                 flex-direction: column;
                 align-items: center;
                 width: 100%;
                 gap: 15px;
             }
-
             #keyboard-container {
                 flex-basis: auto;
                 width: 100%;
@@ -178,7 +153,6 @@
                 margin-bottom: 15px;
                 align-self: auto;
             }
-
             textarea {
                 flex-basis: auto;
                 width: 100%;
@@ -186,17 +160,14 @@
                 min-height: 150px;
                 font-size: 1.3em;
             }
-
             .key {
                 padding: 8px 10px;
                 font-size: 1.1em;
                 min-width: 35px;
             }
-
             .key-space {
                 flex-grow: 3;
             }
-
             .keyboard-info {
                 font-size: 0.85em; /* Smaller font on small screens */
                 padding: 8px;
@@ -206,7 +177,6 @@
                 margin-right: 10px;
             }
         }
-
         @media (max-width: 480px) {
             .key {
                 padding: 6px 8px;
@@ -232,9 +202,7 @@
     </style>
 </head>
 <body>
-
     <h1>Online Amharic Keyboard (የአማርኛ ኪቦርድ)</h1>
-
     <div class="main-layout">
         <div id="keyboard-container">
             <div id="variation-keys" class="keyboard-row">
@@ -250,10 +218,8 @@
             <div id="special-keys" class="keyboard-row">
             </div>
         </div>
-
         <textarea id="output" rows="8" placeholder="Type Amharic here..."></textarea>
     </div>
-
     <div class="keyboard-info"> Using physical keyboard:
 le = ለ
 lu= ሉ
@@ -289,7 +255,6 @@ g = ገ
 ~ = ጸ
 f = ፈ
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const outputTextarea = document.getElementById('output');
@@ -299,7 +264,6 @@ f = ፈ
             const symbolEmojiKeysContainer = document.getElementById('symbol-emoji-keys');
             const numberKeysContainer = document.getElementById('number-keys');
             const specialKeysContainer = document.getElementById('special-keys');
-
             const fidelGroups = {
                 'ሀ': ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ', 'ኋ'], 
                 'ለ': ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ', 'ሏ'],
@@ -335,7 +299,6 @@ f = ፈ
                 'ፈ': ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ', 'ፏ'],
                 'ፐ': ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ', 'ፗ']
             };
-
             const punctuationVirtual = ['፡',";", '።', '፣', '፤', '፥', '፦', '፧'', '(', ')', '!', '?'];
             const numbersVirtual = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
             const specialKeysVirtual = ['Backspace', 'Space', 'Enter'];
@@ -343,49 +306,40 @@ f = ፈ
                 '@', '#', '$', '%', '&', '*', '-', '+', '=', '/', '\\', '|', '<', '>', 
                 '😀', '😂', '👍', '🙏', '❤️'
             ];
-
             let keySequence = '';
             let sequenceTimer = null;
             const SEQUENCE_TIMEOUT = 2000;
-
             const sequenceMapping = {};
             const potentialPrefixes = new Set();
             const baseConsonantToSixthForm = {};
             let lastDisplayedVariationsBase = null;
-
             const baseKeyTriggers = {
                 'h': 'ሀ', 'l': 'ለ', 'H': 'ሐ', 'm': 'መ', 'S': 'ሠ', 'r': 'ረ', 's': 'ሰ',
-                ':': 'ሸ', 'q': 'ቀ', 'b': 'በ', 'v': 'ቨ', 't': 'ተ', 'c': 'ቸ',
+                 'q': 'ቀ', 'b': 'በ', 'v': 'ቨ', 't': 'ተ', 'c': 'ቸ',
                 'V': 'ኀ', 'n': 'ነ', 'N': 'ኘ', 'x': 'አ', 'k': 'ከ', 'K': 'ኸ', 
                 'w': 'ወ', 'X': 'ዐ', 'z': 'ዘ', 'Z': 'ዠ',
                 'Y': 'የ', 'd': 'ደ', 'j': 'ጀ', 'g': 'ገ', 'T': 'ጠ', 'C': 'ጨ', 'P': 'ጰ',
-                '<': 'ጸ', '>': 'ፀ', 'f': 'ፈ', 'p': 'ፐ'      
+                '<': 'ጸ', '>': 'ፀ', '/': 'ሸ', 'f': 'ፈ', 'p': 'ፐ'      
             };
-
             for (const keyTrigger in baseKeyTriggers) {
                 const baseFidel = baseKeyTriggers[keyTrigger];
                 const variations = fidelGroups[baseFidel];
                 if (!variations || variations.length < 7) continue;
-
                 potentialPrefixes.add(keyTrigger);
-
                 sequenceMapping[keyTrigger + 'e'] = variations[0];
                 sequenceMapping[keyTrigger + 'u'] = variations[1];
                 sequenceMapping[keyTrigger + 'i'] = variations[2];
                 sequenceMapping[keyTrigger + 'a'] = variations[3];
                 sequenceMapping[keyTrigger + 'y'] = variations[4];
                 sequenceMapping[keyTrigger + 'o'] = variations[6];
-
                 if (variations.length > 7 && variations[7]) {
                     const labializedSequence = keyTrigger + 'wa';
                     sequenceMapping[labializedSequence] = variations[7];
                     potentialPrefixes.add(keyTrigger + 'w');
                 }
-
                 baseConsonantToSixthForm[keyTrigger] = variations[5];
             }
-
-            const directMappings = {'/': '/', '?': '?',   
+            const directMappings = {'/': 'ሸ', '?': '?',   
                 '.': '።', ',': '፣', ';': '፤', ':': '፡', '?': '፧',
                 '!': '፩', '@': '፪', '#': '፫', '$': '፬', '%': '፭',
                 '^': '፮', '&': '፯', '*': '፰', '(': '፱', ')': '፲',
@@ -393,19 +347,15 @@ f = ፈ
             for (const key in directMappings) {
                 sequenceMapping[key] = directMappings[key];
             }
-
             function createKey(keyChar, container, clickHandler, cssClasses = [], ariaLabel = null) {
                 const keyElement = document.createElement('button');
                 keyElement.textContent = keyChar;
                 keyElement.classList.add('key', ...cssClasses);
                 keyElement.addEventListener('click', clickHandler);
-
                 keyElement.setAttribute('aria-label', ariaLabel || keyChar);
-
                 container.appendChild(keyElement);
                 return keyElement;
             }
-
             function resolveSequence() {
                 if (sequenceTimer) {
                     clearTimeout(sequenceTimer);
@@ -416,17 +366,14 @@ f = ፈ
                 }
                 keySequence = '';
             }
-
             function clearSequenceStateOnly() {
                 if (sequenceTimer) clearTimeout(sequenceTimer);
                 resolveSequence();
                 keySequence = '';
             }
-
             function displayVariations(baseFidel) {
                 const variations = fidelGroups[baseFidel];
                 variationKeysContainer.innerHTML = '';
-
                 if (variations) {
                     variations.forEach(variation => {
                         createKey(variation, variationKeysContainer, handleCharKeyClick);
@@ -436,26 +383,22 @@ f = ፈ
                     lastDisplayedVariationsBase = null;
                 }
             }
-
             function handleBaseKeyClick(event) {
                 clearSequenceStateOnly();
                 const baseKey = event.target.textContent;
                 displayVariations(baseKey);
             }
-
             function handleCharKeyClick(event) {
                 clearSequenceStateOnly();
                 const char = event.target.textContent;
                 insertAtCursor(outputTextarea, char);
             }
-
             function handleSpecialKeyClick(event) {
                 clearSequenceStateOnly();
                 const keyType = event.target.textContent;
                 processSpecialKey(keyType);
                 outputTextarea.focus();
             }
-
             function insertAtCursor(textarea, textToInsert) {
                 const startPos = textarea.selectionStart;
                 const endPos = textarea.selectionEnd;
@@ -465,12 +408,10 @@ f = ፈ
                 textarea.selectionStart = textarea.selectionEnd = newCursorPos;
                 textarea.focus();
             }
-
             function processSpecialKey(keyType) {
                 const currentVal = outputTextarea.value;
                 const selectionStart = outputTextarea.selectionStart;
                 const selectionEnd = outputTextarea.selectionEnd;
-
                 switch (keyType) {
                     case 'Backspace':
                         if (selectionStart === selectionEnd && selectionStart > 0) {
@@ -489,22 +430,18 @@ f = ፈ
                         break;
                 }
             }
-
             outputTextarea.addEventListener('keydown', (event) => {
                 if (event.ctrlKey || event.altKey || event.metaKey) {
                     clearSequenceStateOnly();
                     return;
                 }
-
                 const key = event.key;
-
                 if (key === 'Backspace' || key === 'Enter' || key === ' ') {
                     event.preventDefault();
                     clearSequenceStateOnly();
                     processSpecialKey(key);
                     return;
                 }
-
                 if (key.startsWith('Arrow') || key === 'Tab' || key === 'Escape' ||
                     key === 'Home' || key === 'End' || key === 'PageUp' || key === 'PageDown' ||
                     key === 'Delete' || key.startsWith('F') || key === 'Shift' ||
@@ -512,27 +449,22 @@ f = ፈ
                     resolveSequence();
                     return;
                 }
-
                 if (sequenceTimer) {
                     clearTimeout(sequenceTimer);
                     sequenceTimer = null;
                 }
-
                 const keyForMapping = key;
                 const potentialNewSequence = keySequence + keyForMapping;
-
                 if (sequenceMapping.hasOwnProperty(potentialNewSequence)) {
                     event.preventDefault();
                     insertAtCursor(outputTextarea, sequenceMapping[potentialNewSequence]);
                     keySequence = '';
                     return;
                 }
-
                 if (potentialPrefixes.has(potentialNewSequence)) {
                     event.preventDefault();
                     keySequence = potentialNewSequence;
                     sequenceTimer = setTimeout(resolveSequence, SEQUENCE_TIMEOUT);
-
                     let baseTrigger = potentialNewSequence;
                     if (potentialNewSequence.endsWith('w') && potentialNewSequence.length > 1) {
                         baseTrigger = potentialNewSequence.slice(0, -1);
@@ -545,33 +477,27 @@ f = ፈ
                     }
                     return;
                 }
-
                 if (keySequence.length > 0) {
                     resolveSequence();
                 }
-
                 if (sequenceMapping.hasOwnProperty(keyForMapping)) {
                     event.preventDefault();
                     insertAtCursor(outputTextarea, sequenceMapping[keyForMapping]);
                     keySequence = '';
                     return;
                 }
-
                 if (potentialPrefixes.has(keyForMapping)) {
                     event.preventDefault();
                     keySequence = keyForMapping;
                     sequenceTimer = setTimeout(resolveSequence, SEQUENCE_TIMEOUT);
-
                     const baseFidel = baseKeyTriggers[keyForMapping];
                     if (baseFidel && baseFidel !== lastDisplayedVariationsBase) {
                         displayVariations(baseFidel);
                     }
                     return;
                 }
-
                 keySequence = '';
             });
-
             function initKeyboard() {
                 Object.keys(fidelGroups).forEach(baseKey => {
                     createKey(baseKey, baseKeysContainer, handleBaseKeyClick);
@@ -595,9 +521,7 @@ f = ፈ
                     createKey(keyName, specialKeysContainer, handleSpecialKeyClick);
                 });
             }
-
             initKeyboard();
-
             document.addEventListener('click', (event) => {
                 if (!event.target.closest('#keyboard-container') &&
                     !event.target.closest('#variation-keys') &&
@@ -607,7 +531,6 @@ f = ፈ
                     lastDisplayedVariationsBase = null;
                 }
             });
-
             outputTextarea.addEventListener('blur', () => {
                 setTimeout(() => {
                     if (!document.activeElement ||
@@ -621,7 +544,6 @@ f = ፈ
                     }
                 }, 150);
             });
-
         });
     </script>
 </body>
