@@ -131,7 +131,7 @@
         }
 
         .keyboard-notice {
-            margin-bottom: 20px; /* Adjusted margin to be above the main layout */
+            margin-top: 20px;
             padding: 15px;
             background-color: #e6f7ff;
             border: 1px solid #91d5ff;
@@ -165,6 +165,20 @@
             border: 1px solid #bae7ff;
             text-align: center;
         }
+
+        .quick-tip {
+            width: 95%;
+            max-width: 1200px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.95em;
+            color: #555;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
 
         @media (max-width: 768px) {
             body {
@@ -219,6 +233,12 @@
             .keyboard-notice ul {
                 grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             }
+
+            .quick-tip {
+                font-size: 0.9em;
+                padding: 8px;
+                width: 100%;
+            }
         }
 
         @media (max-width: 480px) {
@@ -237,6 +257,10 @@
              .keyboard-notice ul {
                 grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             }
+            .quick-tip {
+                font-size: 0.85em;
+                padding: 6px;
+            }
         }
     </style>
 </head>
@@ -244,9 +268,32 @@
 
     <h1>Online Amharic Keyboard (የአማርኛ ኪቦርድ)</h1>
 
+    <div class="main-layout">
+        <div id="keyboard-container">
+            <div id="variation-keys" class="keyboard-row">
+            </div>
+            <div id="base-keys" class="keyboard-row">
+            </div>
+            <div id="punctuation-keys" class="keyboard-row">
+            </div>
+            <div id="symbol-emoji-keys" class="keyboard-row">
+            </div>
+            <div id="number-keys" class="keyboard-row">
+            </div>
+            <div id="special-keys" class="keyboard-row">
+            </div>
+        </div>
+
+        <textarea id="output" rows="8" placeholder="Type Amharic here..."></textarea>
+    </div>
+
+    <div class="quick-tip">
+        **How to use with your physical keyboard:** Type "le = ለ", "lu = ሉ", "li = ሊ", "la = ላ", "ly = ሌ", "l = ል", "lo = ሎ".
+    </div>
+
     <div class="keyboard-notice">
         <h2>How to Type Amharic with Your Physical Keyboard:</h2>
-        <p>This keyboard allows you to type Amharic characters using a **phonetic approach**. Press a **base consonant key** (e.g., 'l' for ለ) followed by a **vowel key** to get the desired Fidel. If you pause after a consonant, you'll get the 6th form (e.g., 'l' for ል).</p>
+        <p>This keyboard allows you to type Amharic characters using a phonetic approach. Press a **base consonant key** (e.g., 'l' for ለ) followed by a **vowel key** to get the desired Fidel. If you pause after a consonant, you'll get the 6th form (e.g., 'l' for ል).</p>
         <p>Here are some examples for the 'ለ' family:</p>
         <ul>
             <li>**le** = ለ</li>
@@ -268,25 +315,6 @@
             <li>**,** = ፣ (Amharic comma)</li>
             <li>**!** (Shift+1) = ፩ (Amharic numeral one)</li>
         </ul>
-    </div>
-
-    <div class="main-layout">
-        <div id="keyboard-container">
-            <div id="variation-keys" class="keyboard-row">
-            </div>
-            <div id="base-keys" class="keyboard-row">
-            </div>
-            <div id="punctuation-keys" class="keyboard-row">
-            </div>
-            <div id="symbol-emoji-keys" class="keyboard-row">
-            </div>
-            <div id="number-keys" class="keyboard-row">
-            </div>
-            <div id="special-keys" class="keyboard-row">
-            </div>
-        </div>
-
-        <textarea id="output" rows="8" placeholder="Type Amharic here..."></textarea>
     </div>
 
     <script>
