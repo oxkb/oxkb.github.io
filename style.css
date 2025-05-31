@@ -1,0 +1,194 @@
+body {
+    font-family: 'Noto Sans Ethiopic', 'Nyala', sans-serif; /* Common fonts for Amharic */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    min-height: 100vh; /* Ensure body takes full height */
+    box-sizing: border-box; /* Include padding in width/height calculation */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center; /* Center heading */
+    margin-top: 0
+}
+
+/* NEW: Main layout container */
+.main-layout {
+    display: flex;
+    flex-direction: row; /* Arrange items side-by-side */
+    gap: 20px; /* Space between keyboard and textarea */
+    width: 95%; /* Adjust overall width */
+    max-width: 1200px; /* Maximum width */
+    align-items: flex-start; /* Align items to the top */
+    margin: 0 auto; /* Center the layout container */
+}
+
+/* UPDATED: Keyboard container styles */
+#keyboard-container {
+    background-color: #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Spacing between rows */
+    /* width: 80%; REMOVED - Flexbox will handle width */
+    /* max-width: 700px; REMOVED or adjust */
+    flex: 1 1 450px; /* Flex properties: grow, shrink, basis (adjust basis as needed) */
+    max-width: 600px; /* Optional: Prevent keyboard from getting too wide */
+    align-self: stretch; /* Make keyboard height match textarea if desired, or remove */
+}
+
+/* UPDATED: Textarea styles */
+textarea {
+    /* width: 80%; REMOVED - Flexbox will handle width */
+    /* max-width: 600px; REMOVED */
+    /* margin-bottom: 20px; REMOVED - Handled by gap */
+    padding: 15px; /* Increased padding slightly */
+    font-size: 1.5em; /* Larger font size for Amharic */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: inherit; /* Use body's font */
+    flex: 1 1 45%;
+
+
+/* org: flex: 2 1 60%;  flex: 1.5 1 50%;    flex: 1 1 45%; or flex: 1.2 1 55%;  */
+
+/* Flex properties: grow more than keyboard, shrink, basis */
+
+
+    min-height: 200px; /* Ensure a minimum height */
+    box-sizing: border-box; /* Include padding/border in width */
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow keys to wrap */
+    gap: 5px; /* Spacing between keys */
+    min-height: 45px; /* Ensure row has height even when empty */
+}
+
+.key {
+    padding: 10px 15px;
+    font-size: 1.2em;
+    min-width: 40px; /* Minimum key width */
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    font-family: inherit; /* Use body's font */
+    user-select: none; /* Prevent text selection on double click */
+}
+
+.key:hover {
+    background-color: #f0f0f0;
+}
+
+.key:active {
+    background-color: #dcdcdc;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific styling for larger keys */
+.key-special {
+    padding: 10px 20px;
+}
+
+.key-space {
+    flex-grow: 4; /* Make space bar wider */
+}
+
+.key-backspace {
+    flex-grow: 1;
+}
+
+/* Style for the variation row when it has keys */
+#variation-keys:not(:empty) {
+    background-color: #f8f8f8;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 5px; /* Add some space below variations */
+}
+
+/* Hide variation row when empty */
+#variation-keys:empty {
+    display: none;
+}
+
+
+/* style.css */
+
+/* ... (previous styles remain the same) ... */
+
+/* UPDATED: Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    body {
+        padding: 10px; /* Reduce body padding on smaller screens */
+    }
+
+    h1 {
+        font-size: 1.5em; /* Slightly smaller heading */
+        margin-bottom: 15px;
+    }
+
+    .main-layout {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items when stacked */
+        width: 100%; /* Use full width */
+        gap: 15px; /* Adjust gap */
+    }
+
+    #keyboard-container {
+        flex-basis: auto; /* Reset flex-basis */
+        width: 100%; /* Take full width */
+        max-width: 100%; /* Allow full width */
+        padding: 10px; /* Adjust padding */
+        /* max-width: 600px; REMOVED - Let it take full width */
+        margin-bottom: 15px; /* Adjust space below keyboard */
+        align-self: auto; /* Reset alignment */
+    }
+
+    textarea {
+       flex-basis: auto; /* Reset flex-basis */
+       width: 100%; /* Take full width */
+       max-width: 100%; /* Allow full width */
+       /* max-width: 600px; REMOVED - Let it take full width */
+       min-height: 150px; /* Adjust min height for smaller screens */
+       font-size: 1.3em; /* Adjust font size */
+    }
+
+    .key {
+        padding: 8px 10px; /* Slightly adjust key padding */
+        font-size: 1.1em; /* Adjust key font size */
+        min-width: 35px; /* Adjust min key width */
+    }
+
+    .key-space {
+        flex-grow: 3; /* Adjust space bar growth */
+    }
+}
+
+/* Optional: Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .key {
+        padding: 6px 8px;
+        font-size: 1em;
+        min-width: 30px;
+    }
+    h1 {
+        font-size: 1.3em;
+    }
+     textarea {
+       min-height: 120px;
+       font-size: 1.2em;
+    }
+}
+
