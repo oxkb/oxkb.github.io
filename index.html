@@ -1,622 +1,476 @@
 <!DOCTYPE html>
 <html lang="am">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily</title>
+    <title>Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily</title>
 
-    <meta name="description" content="A free and easy-to-use online Amharic keyboard (Fidel keyboard) to type Amharic letters and characters directly in your browser. Supports physical keyboard input and virtual key selection. Ideal for typing Amharic on any device.">
-    <meta name="keywords" content="Amharic keyboard, online Amharic keyboard, Fidel keyboard, type Amharic, አማርኛ ኪቦርድ, Ethiopian keyboard, Geez keyboard, free Amharic typing, Amharic letters, type Fidel, Amharic online, Ethiopia typing">
-    <meta name="author" content="Ahmedhaji Sadik Umer">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="A free and easy-to-use online Amharic keyboard (Fidel keyboard) to type Amharic letters and characters directly in your browser. Supports physical keyboard input.">
+    <meta name="keywords" content="Amharic keyboard, online Amharic keyboard, Fidel keyboard, type Amharic, አማርኛ ኪቦርድ, Ethiopian keyboard, Geez keyboard, free Amharic typing">
+    <meta name="author" content="Ahmedhaji Sadik Umer">
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://amkb.vercel.app/">
-    <meta property="og:title" content="Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily">
-    <meta property="og:description" content="Free online Amharic Fidel keyboard for easy typing in your browser. Supports physical keyboard and virtual key clicks.">
-    <meta property="og:image" content="https://amkb.vercel.app/og-image.png"> <meta property="og:locale" content="am_ET">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amkb.vercel.app/">
+    <meta property="og:title" content="Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily">
+    <meta property="og:description" content="Free online Amharic Fidel keyboard for easy typing in your browser.">
 
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://amkb.vercel.app/">
-    <meta property="twitter:title" content="Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily">
-    <meta property="twitter:description" content="Free online Amharic Fidel keyboard for easy typing in your browser. Supports physical keyboard and virtual key clicks.">
-    <meta property="twitter:image" content="https://amkb.vercel.app/twitter-image.png"> <link rel="canonical" href="https://amkb.vercel.app/">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://amkb.vercel.app/">
+    <meta property="twitter:title" content="Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily">
+    <meta property="twitter:description" content="Free online Amharic Fidel keyboard for easy typing in your browser.">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png"> <link rel="manifest" href="/site.webmanifest"> <meta name="google-site-verification" content="YOykyV7jEUg5Nj2GeyhHUcewf9WW-Ruyke1v23KePrY" />
+    <meta name="google-site-verification" content="YOykyV7jEUg5Nj2GeyhHUcewf9WW-Ruyke1v23KePrY" />
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Online Amharic Keyboard (የአማርኛ ኪቦርድ)",
-      "url": "https://amkb.vercel.app/",
-      "description": "A free and easy-to-use online Amharic keyboard (Fidel keyboard) to type Amharic letters and characters directly in your browser.",
-      "keywords": "Amharic keyboard, online Amharic keyboard, Fidel keyboard, type Amharic, አማርኛ ኪቦርድ, Ethiopian keyboard, Geez keyboard, free Amharic typing",
-      "inLanguage": "am",
-      "author": {
-        "@type": "Person",
-        "name": "Ahmedhaji Sadik Umer"
-      },
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://amkb.vercel.app/?s={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
+    <style>
+        /* For improved performance and caching, it's recommended to move this CSS to an external file (e.g., style.css) */
+        body {
+            font-family: 'Noto Sans Ethiopic', 'Nyala', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background-color: #f4f4f4;
+            margin: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
 
-    <style>
-        /* style.css */
-        body {
-            font-family: 'Noto Sans Ethiopic', 'Nyala', sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 10px;
-            background-color: #f4f4f4;
-            margin: 0;
-            min-height: 100vh;
-            box-sizing: border-box;
-            color: #333; /* Default text color */
-        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            margin-top: 0;
+            font-size: 1.8em;
+        }
 
-        header {
-            width: 100%;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            width: 95%;
+            max-width: 1200px;
+            align-items: flex-start;
+            margin: 0 auto;
+        }
 
-        h1 {
-            color: #333;
-            margin-bottom: 0; /* Adjusted from 20px as header has margin-bottom */
-            text-align: center;
-            margin-top: 0;
-            font-size: 1.8em;
-        }
+        #keyboard-container {
+            background-color: #e0e0e0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1 1 550px; /* Adjusted flex-basis */
+            max-width: 700px;
+            align-self: stretch;
+        }
 
-        .main-layout {
-            display: flex;
-            flex-direction: row; /* Default for larger screens */
-            gap: 20px;
-            width: 95%;
-            max-width: 1200px;
-            align-items: flex-start;
-            margin: 0 auto; /* Center the layout */
-        }
-        
-        #keyboard-app {
-            display: flex; /* For internal alignment if needed, currently main-layout handles it */
-            flex-direction: column;
-            flex: 1 1 550px; /* Allow keyboard app area to grow and shrink */
-            max-width: 700px; /* Max width for keyboard area */
-        }
+        textarea {
+            padding: 15px;
+            font-size: 1.5em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+            flex: 1 1 45%;
+            min-height: 250px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
 
-        #keyboard-container {
-            background-color: #e0e0e0;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            /* flex: 1 1 550px; Removed, parent #keyboard-app handles flex */
-            /* max-width: 700px; Removed, parent #keyboard-app handles flex */
-            align-self: stretch; /* Ensure it stretches if parent allows */
-        }
+        .keyboard-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: nowrap; /* Prevent wrapping for consistent rows */
+            gap: 6px;
+            min-height: 45px;
+        }
 
-        textarea#output { /* More specific selector */
-            padding: 15px;
-            font-size: 1.5em;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-family: inherit;
-            flex: 1 1 45%; /* Grow and shrink relative to keyboard-app */
-            min-height: 250px; /* Default minimum height */
-            box-sizing: border-box;
-            resize: vertical;
-            background-color: #fff;
-            color: #333;
-        }
+        .key {
+            padding: 10px 15px;
+            font-size: 1.2em;
+            flex: 1; /* Allow keys to grow evenly */
+            text-align: center;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-bottom-width: 3px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
+            font-family: inherit;
+            user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-        .keyboard-row {
-            display: flex;
-            justify-content: center;
-            flex-wrap: nowrap; /* Prevent wrapping for consistent rows */
-            gap: 6px;
-            min-height: 45px; /* Minimum height for rows */
-        }
+        .key:hover {
+            background-color: #f0f0f0;
+        }
 
-        .key {
-            padding: 10px 15px;
-            font-size: 1.2em;
-            flex: 1; /* Allow keys to grow and shrink evenly */
-            text-align: center;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-bottom-width: 3px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
-            font-family: inherit;
-            user-select: none; /* Prevent text selection on keys */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-width: 30px; /* Minimum width to prevent keys from becoming too small */
-            color: #333;
-        }
+        .key:active {
+            background-color: #dcdcdc;
+            border-bottom-width: 1px;
+            transform: translateY(2px);
+        }
+        
+        /* Special keys styling */
+        .key[data-key="Backspace"], .key[data-key="Enter"] {
+            flex-grow: 1.5;
+            font-size: 0.9em;
+        }
+        .key[data-key="Space"] {
+            flex-grow: 8;
+        }
+        .key[data-key="Tab"] {
+            flex-grow: 1.2;
+            font-size: 0.9em;
+        }
 
-        .key:hover {
-            background-color: #f0f0f0;
-        }
+        #variation-keys {
+            background-color: #f8f8f8;
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            min-height: 40px;
+        }
+        
+        #variation-keys:empty {
+            display: none;
+        }
 
-        .key:active {
-            background-color: #dcdcdc;
-            border-bottom-width: 1px;
-            transform: translateY(2px);
-        }
+        .keyboard-info {
+            width: 95%;
+            max-width: 1200px;
+            margin-top: 15px;
+            text-align: left;
+            font-size: 1em;
+            color: #333;
+            background-color: #fffacd;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0c240;
+            line-height: 1.6;
+        }
+        .keyboard-info strong {
+            font-weight: bold;
+            color: #000;
+        }
+        .keyboard-info code {
+            background-color: #e0e0e0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
 
-        /* Special keys styling */
-        .key[data-key="Backspace"], .key[data-key="Enter"] {
-            flex-grow: 1.5; /* Make them slightly wider */
-            font-size: 0.9em;
-        }
-        .key[data-key="Space"] {
-            flex-grow: 8; /* Make space bar significantly wider */
-        }
-        /* Removed .key[data-key="Tab"] as Tab is not in the JS layout */
+        footer {
+            margin-top: 25px;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
+            width: 100%;
+        }
 
-        #variation-keys {
-            background-color: #f8f8f8;
-            padding: 5px;
-            border-radius: 5px;
-            margin-bottom: 5px;
-            min-height: 40px; /* Ensure it has height even when populated */
-            display: flex; /* To use gap for its children */
-            flex-wrap: wrap; /* Allow variations to wrap if many */
-            gap: 5px; /* Space between variation keys */
-        }
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            h1 { font-size: 1.5em; }
+            .main-layout {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+            }
+            #keyboard-container, textarea {
+                flex-basis: auto;
+                width: 100%;
+                max-width: 100%;
+                align-self: auto;
+            }
+            textarea { min-height: 150px; font-size: 1.3em; }
+            .key { padding: 8px 10px; font-size: 1.1em; }
+            .keyboard-info { font-size: 0.9em; }
+        }
 
-        #variation-keys:empty {
-            display: none; /* Hide if no variations */
-        }
-        
-        #variation-keys .key { /* Style for keys within variation container */
-            font-size: 1em; /* Slightly smaller for variations */
-            padding: 8px 10px;
-            flex-grow: 0; /* Don't let variation keys grow excessively */
-            flex-shrink: 0; /* Don't let them shrink too much, rely on wrapping */
-        }
-
-
-        .keyboard-info {
-            width: 100%; /* Take full width in its column on mobile, or its flex space */
-            /* max-width: 1200px; /* Max-width handled by .main-layout */
-            margin-top: 20px; /* Spacing from the keyboard/textarea area */
-            text-align: left;
-            font-size: 1em;
-            color: #333;
-            background-color: #fffacd; /* Light yellow background */
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #e0c240; /* Golden border */
-            line-height: 1.6;
-            box-sizing: border-box;
-        }
-        .keyboard-info h2 {
-            margin-top: 0;
-            font-size: 1.2em;
-            color: #000;
-        }
-        .keyboard-info strong {
-            /* font-weight: bold; Redundant, strong is bold by default */
-            color: #000;
-        }
-        .keyboard-info code {
-            background-color: #e0e0e0;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        footer {
-            margin-top: 25px;
-            padding: 15px 10px; /* More padding */
-            text-align: center;
-            font-size: 0.9em;
-            color: #555;
-            width: 100%;
-            background-color: #e9e9e9; /* Light grey footer background */
-            border-top: 1px solid #ddd;
-            box-sizing: border-box;
-        }
-        footer p {
-            margin: 5px 0;
-        }
-
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            body { padding: 10px; }
-            h1 { font-size: 1.5em; }
-            .main-layout {
-                flex-direction: column; /* Stack elements vertically */
-                width: 100%; /* Use full width */
-                gap: 15px;
-            }
-            #keyboard-app, textarea#output {
-                flex-basis: auto; /* Reset flex-basis */
-                width: 100%;     /* Full width for stacked items */
-                max-width: 100%; /* Override any previous max-width */
-                align-self: auto; /* Reset self-alignment */
-            }
-             textarea#output {
-                min-height: 150px;
-                font-size: 1.3em;
-            }
-            .key {
-                padding: 8px 10px;
-                font-size: 1em; /* Adjust key font size for tablets */
-                min-height: 40px;
-            }
-            #variation-keys .key {
-                 font-size: 0.9em;
-                 padding: 6px 8px;
-            }
-            .keyboard-info {
-                font-size: 0.9em;
-                margin-top: 15px; /* Adjust top margin */
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 1.3em; }
-            .key {
-                font-size: 0.9em; /* Further reduce key font size for small phones */
-                padding: 6px 5px; /* Adjust padding for smaller keys */
-                min-width: 20px; /* Allow keys to be smaller */
-                gap: 3px; /* Reduce gap between keys */
-            }
-            #variation-keys .key {
-                 font-size: 0.8em;
-                 padding: 5px 6px;
-            }
-            textarea#output {
-                min-height: 120px;
-                font-size: 1.2em;
-            }
-            .keyboard-info {
-                font-size: 0.85em;
-                padding: 10px;
-            }
-            .keyboard-row {
-                gap: 4px; /* Reduce gap between keys in a row */
-            }
-            .key[data-key="Backspace"], .key[data-key="Enter"] {
-                font-size: 0.7em; /* Adjust font for special keys */
-            }
-        }
-    </style>
+        @media (max-width: 480px) {
+            h1 { font-size: 1.3em; }
+            .key { font-size: 1em; }
+            textarea { min-height: 120px; font-size: 1.2em; }
+            .keyboard-info { font-size: 0.85em; }
+            .keyboard-row { gap: 4px; }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>Online Amharic Keyboard (የአማርኛ ኪቦርድ)</h1>
-    </header>
+    <h1>Online Amharic Keyboard (የአማርኛ ኪቦርድ)</h1>
 
-    <main class="main-layout">
-        <section id="keyboard-app" aria-labelledby="keyboard-heading">
-            <h2 id="keyboard-heading" class="visually-hidden">Amharic Typing Area</h2>
+    <div class="main-layout">
+        <div id="keyboard-container">
+            <div id="variation-keys" class="keyboard-row"></div>
+            </div>
+        <textarea id="output" rows="8" placeholder="Type Amharic here..."></textarea>
+    </div>
 
-            <div id="keyboard-container" role="application" aria-roledescription="Amharic virtual keyboard">
-                <div id="variation-keys" class="keyboard-row" aria-label="Character variations">
-                    </div>
-                </div>
-        </section>
-        <textarea id="output" rows="8" placeholder="Type Amharic here... (እዚህ አማርኛ ይጻፉ...)" aria-label="Amharic text input area" lang="am"></textarea>
+    <div class="keyboard-info">
+        <strong>How to use your physical keyboard:</strong><br>
+        Type a consonant (like <code>b</code>) followed by a vowel (<code>e, u, i, a, y, o</code>) to get different forms: <code>be</code> &rarr; በ, <code>bu</code> &rarr; ቡ, <code>bi</code> &rarr; ቢ, <code>ba</code> &rarr; ባ, <code>by</code> &rarr; ቤ, <code>bo</code> &rarr; ቦ.<br>
+        Press a consonant key once to get the 6th form (e.g., <code>b</code> &rarr; ብ). For labialized forms, type 'wa' after the consonant (e.g., <code>bwa</code> &rarr; ቧ).<br>
+        <strong>Special Characters:</strong> <code>h</code> &rarr; ሀ, <code>H</code> (Shift+h) &rarr; ሐ | <code>s</code> &rarr; ሰ, <code>S</code> (Shift+s) &rarr; ሠ | <code>t</code> &rarr; ተ, <code>T</code> (Shift+t) &rarr; ጠ | <code>c</code> &rarr; ቸ, <code>C</code> (Shift+c) &rarr; ጨ | <code>n</code> &rarr; ነ, <code>N</code> (Shift+n) &rarr; ኘ | <code>z</code> &rarr; ዘ, <code>Z</code> (Shift+z) &rarr; ዠ | <code>`</code> &rarr; ሸ | <code>.</code> &rarr; ። | <code>,</code> &rarr; ፣ | Shift+. &rarr; ፀ | Shift+, &rarr; ጸ
+    </div>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const outputTextarea = document.getElementById('output');
+        const keyboardContainer = document.getElementById('keyboard-container');
+        const variationKeysContainer = document.getElementById('variation-keys');
 
-    </main> <section class="keyboard-info" aria-labelledby="keyboard-instructions-heading">
-        <h2 id="keyboard-instructions-heading">How to Use</h2>
-        <p><strong>Using your physical keyboard:</strong><br>
-        Type a consonant (like <code>b</code>) followed by a vowel (<code>e, u, i, a, y, o</code>) to get different forms: <code>be</code> &rarr; በ, <code>bu</code> &rarr; ቡ, <code>bi</code> &rarr; ቢ, <code>ba</code> &rarr; ባ, <code>by</code> &rarr; ቤ, <code>bo</code> &rarr; ቦ.<br>
-        Press a consonant key once to get the 6th form (e.g., <code>b</code> &rarr; ብ). For labialized forms, type 'wa' after the consonant (e.g., <code>bwa</code> &rarr; ቧ).
-        </p>
-        <p><strong>Special Characters:</strong><br>
-        <code>h</code> &rarr; ሀ, <code>H</code> (Shift+h) &rarr; ሐ | <code>s</code> &rarr; ሰ, <code>S</code> (Shift+s) &rarr; ሠ | <code>t</code> &rarr; ተ, <code>T</code> (Shift+t) &rarr; ጠ | <code>c</code> &rarr; ቸ, <code>C</code> (Shift+c) &rarr; ጨ | <code>n</code> &rarr; ነ, <code>N</code> (Shift+n) &rarr; ኘ | <code>z</code> &rarr; ዘ, <code>Z</code> (Shift+z) &rarr; ዠ | <code>`</code> &rarr; ሸ | <code>.</code> &rarr; ። | <code>,</code> &rarr; ፣ | Shift+. &rarr; ፀ | Shift+, &rarr; ጸ
-        </p>
-    </section>
+        const fidelGroups = {
+            'ሀ': ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ'], 'ለ': ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ', 'ሏ'],
+            'ሐ': ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ', 'ሗ'], 'መ': ['መ', 'ሙ', 'ሚ', 'ማ', 'ሜ', 'ም', 'ሞ', 'ሟ'],
+            'ሠ': ['ሠ', 'ሡ', 'ሢ', 'ሣ', 'ሤ', 'ሥ', 'ሦ', 'ሧ'], 'ረ': ['ረ', 'ሩ', 'ሪ', 'ራ', 'ሬ', 'ር', 'ሮ', 'ሯ'],
+            'ሰ': ['ሰ', 'ሱ', 'ሲ', 'ሳ', 'ሴ', 'ስ', 'ሶ', 'ሷ'], 'ሸ': ['ሸ', 'ሹ', 'ሺ', 'ሻ', 'ሼ', 'ሽ', 'ሾ', 'ሿ'],
+            'ቀ': ['ቀ', 'ቁ', 'ቂ', 'ቃ', 'ቄ', 'ቅ', 'ቆ', 'ቋ'], 'በ': ['በ', 'ቡ', 'ቢ', 'ባ', 'ቤ', 'ብ', 'ቦ', 'ቧ'],
+            'ቨ': ['ቨ', 'ቩ', 'ቪ', 'ቫ', 'ቬ', 'ቭ', 'ቮ', 'ቯ'], 'ተ': ['ተ', 'ቱ', 'ቲ', 'ታ', 'ቴ', 'ት', 'ቶ', 'ቷ'],
+            'ቸ': ['ቸ', 'ቹ', 'ቺ', 'ቻ', 'ቼ', 'ች', 'ቾ', 'ቿ'], 'ኀ': ['ኀ', 'ኁ', 'ኂ', 'ኃ', 'ኄ', 'ኅ', 'ኆ', 'ኋ'],
+            'ነ': ['ነ', 'ኑ', 'ኒ', 'ና', 'ኔ', 'ን', 'ኖ', 'ኗ'], 'ኘ': ['ኘ', 'ኙ', 'ኚ', 'ኛ', 'ኜ', 'ኝ', 'ኞ', 'ኟ'],
+            'አ': ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'], 'ከ': ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ', 'ኳ'],
+            'ኸ': ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ', 'ዃ'], 'ወ': ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'],
+            'ዐ': ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'], 'ዘ': ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ', 'ዟ'],
+            'ዠ': ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ', 'ዧ'], 'የ': ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'],
+            'ደ': ['ደ', 'ዱ', 'ዲ', 'ዳ', 'ዴ', 'ድ', 'ዶ', 'ዷ'], 'ጀ': ['ጀ', 'ጁ', 'ጂ', 'ጃ', 'ጄ', 'ጅ', 'ጆ', 'ጇ'],
+            'ገ': ['ገ', 'ጉ', 'ጊ', 'ጋ', 'ጌ', 'ግ', 'ጎ', 'ጓ'], 'ጠ': ['ጠ', 'ጡ', 'ጢ', 'ጣ', 'ጤ', 'ጥ', 'ጦ', 'ጧ'],
+            'ጨ': ['ጨ', 'ጩ', 'ጪ', 'ጫ', 'ጬ', 'ጭ', 'ጮ', 'ጯ'], 'ጰ': ['ጰ', 'ጱ', 'ጲ', 'ጳ', 'ጴ', 'ጵ', 'ጶ', 'ጷ'],
+            'ጸ': ['ጸ', 'ጹ', 'ጺ', 'ጻ', 'ጼ', 'ጽ', 'ጾ', 'ጿ'], 'ፀ': ['ፀ', 'ፁ', 'ፂ', 'ፃ', 'ፄ', 'ፅ', 'ፆ'],
+            'ፈ': ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ', 'ፏ'], 'ፐ': ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ']
+        };
 
-    <footer>
-        <p>Developed by: Ahmedhaji Sadik Umer | Contact: +251945033132</p>
-        <p>&copy; <span id="currentYear"></span> Online Amharic Keyboard. All rights reserved.</p>
-    </footer>
+        const physicalKeyMapping = {
+            'h': 'ሀ', 'l': 'ለ', 'm': 'መ', 'r': 'ረ', 's': 'ሰ', 'q': 'ቀ', 'b': 'በ',
+            't': 'ተ', 'c': 'ቸ', 'n': 'ነ', 'x': 'አ', 'k': 'ከ', 'w': 'ወ', 'z': 'ዘ',
+            'y': 'የ', 'd': 'ደ', 'j': 'ጀ', 'g': 'ገ', 'f': 'ፈ', 'p': 'ፐ', 'v': 'ቨ',
+            // Shift variants
+            'H': 'ሐ', 'S': 'ሠ', 'T': 'ጠ', 'C': 'ጨ', 'N': 'ኘ', 'K': 'ኸ', 'Z': 'ዠ',
+            'V': 'ኀ', 'P': 'ጰ', 'X': 'ዐ',
+            // Punctuation and others
+            '`': 'ሸ', ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?',
+            // Shifted punctuation
+            '<': 'ጸ', '>': 'ፀ'
+        };
 
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const outputTextarea = document.getElementById('output');
-        const keyboardContainer = document.getElementById('keyboard-container');
-        const variationKeysContainer = document.getElementById('variation-keys');
+        const vowelMapping = { 'e': 0, 'u': 1, 'i': 2, 'a': 3, 'y': 4, 'o': 6 };
+        
+        let keySequence = '';
+        let sequenceTimer = null;
+        const SEQUENCE_TIMEOUT = 1200; // ms
 
-        const fidelGroups = {
-            'ሀ': ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ'], 'ለ': ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ', 'ሏ'],
-            'ሐ': ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ', 'ሗ'], 'መ': ['መ', 'ሙ', 'ሚ', 'ማ', 'ሜ', 'ም', 'ሞ', 'ሟ'],
-            'ሠ': ['ሠ', 'ሡ', 'ሢ', 'ሣ', 'ሤ', 'ሥ', 'ሦ', 'ሧ'], 'ረ': ['ረ', 'ሩ', 'ሪ', 'ራ', 'ሬ', 'ር', 'ሮ', 'ሯ'],
-            'ሰ': ['ሰ', 'ሱ', 'ሲ', 'ሳ', 'ሴ', 'ስ', 'ሶ', 'ሷ'], 'ሸ': ['ሸ', 'ሹ', 'ሺ', 'ሻ', 'ሼ', 'ሽ', 'ሾ', 'ሿ'],
-            'ቀ': ['ቀ', 'ቁ', 'ቂ', 'ቃ', 'ቄ', 'ቅ', 'ቆ', 'ቋ'], 'በ': ['በ', 'ቡ', 'ቢ', 'ባ', 'ቤ', 'ብ', 'ቦ', 'ቧ'],
-            'ቨ': ['ቨ', 'ቩ', 'ቪ', 'ቫ', 'ቬ', 'ቭ', 'ቮ', 'ቯ'], 'ተ': ['ተ', 'ቱ', 'ቲ', 'ታ', 'ቴ', 'ት', 'ቶ', 'ቷ'],
-            'ቸ': ['ቸ', 'ቹ', 'ቺ', 'ቻ', 'ቼ', 'ች', 'ቾ', 'ቿ'], 'ኀ': ['ኀ', 'ኁ', 'ኂ', 'ኃ', 'ኄ', 'ኅ', 'ኆ', 'ኋ'],
-            'ነ': ['ነ', 'ኑ', 'ኒ', 'ና', 'ኔ', 'ን', 'ኖ', 'ኗ'], 'ኘ': ['ኘ', 'ኙ', 'ኚ', 'ኛ', 'ኜ', 'ኝ', 'ኞ', 'ኟ'],
-            'አ': ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'], 'ከ': ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ', 'ኳ'],
-            'ኸ': ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ', 'ዃ'], 'ወ': ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'],
-            'ዐ': ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'], 'ዘ': ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ', 'ዟ'],
-            'ዠ': ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ', 'ዧ'], 'የ': ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'],
-            'ደ': ['ደ', 'ዱ', 'ዲ', 'ዳ', 'ዴ', 'ድ', 'ዶ', 'ዷ'], 'ጀ': ['ጀ', 'ጁ', 'ጂ', 'ጃ', 'ጄ', 'ጅ', 'ጆ', 'ጇ'],
-            'ገ': ['ገ', 'ጉ', 'ጊ', 'ጋ', 'ጌ', 'ግ', 'ጎ', 'ጓ'], 'ጠ': ['ጠ', 'ጡ', 'ጢ', 'ጣ', 'ጤ', 'ጥ', 'ጦ', 'ጧ'],
-            'ጨ': ['ጨ', 'ጩ', 'ጪ', 'ጫ', 'ጬ', 'ጭ', 'ጮ', 'ጯ'], 'ጰ': ['ጰ', 'ጱ', 'ጲ', 'ጳ', 'ጴ', 'ጵ', 'ጶ', 'ጷ'],
-            'ጸ': ['ጸ', 'ጹ', 'ጺ', 'ጻ', 'ጼ', 'ጽ', 'ጾ', 'ጿ'], 'ፀ': ['ፀ', 'ፁ', 'ፂ', 'ፃ', 'ፄ', 'ፅ', 'ፆ'],
-            'ፈ': ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ', 'ፏ'], 'ፐ': ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ']
-        };
+        // --- Keyboard Layout Definition ---
+        const keyboardLayout = [
+            Object.keys(fidelGroups).slice(0, 10),
+            Object.keys(fidelGroups).slice(10, 20),
+            Object.keys(fidelGroups).slice(20, 30),
+            Object.keys(fidelGroups).slice(30),
+            ['ጸ', 'ፀ', '፡', '።', '፣', '፤', '?', '!', '(', ')'],
+            ['Backspace', 'Space', 'Enter']
+        ];
+        
+        // --- Core Functions ---
+        function insertAtCursor(textToInsert) {
+            const startPos = outputTextarea.selectionStart;
+            const endPos = outputTextarea.selectionEnd;
+            const currentVal = outputTextarea.value;
+            outputTextarea.value = currentVal.substring(0, startPos) + textToInsert + currentVal.substring(endPos);
+            const newCursorPos = startPos + textToInsert.length;
+            outputTextarea.selectionStart = outputTextarea.selectionEnd = newCursorPos;
+            outputTextarea.focus();
+        }
 
-        const physicalKeyMapping = {
-            'h': 'ሀ', 'l': 'ለ', 'm': 'መ', 'r': 'ረ', 's': 'ሰ', 'q': 'ቀ', 'b': 'በ',
-            't': 'ተ', 'c': 'ቸ', 'n': 'ነ', 'x': 'አ', 'k': 'ከ', 'w': 'ወ', 'z': 'ዘ',
-            'y': 'የ', 'd': 'ደ', 'j': 'ጀ', 'g': 'ገ', 'f': 'ፈ', 'p': 'ፐ', 'v': 'ቨ',
-            'H': 'ሐ', 'S': 'ሠ', 'T': 'ጠ', 'C': 'ጨ', 'N': 'ኘ', 'K': 'ኸ', 'Z': 'ዠ',
-            'V': 'ኀ', 'P': 'ጰ', 'X': 'ዐ',
-            ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?', ''': 'ሸ',
-            '<': 'ፀ', '>': 'ጸ', '/': '/',
-        };
+        function processSpecialKey(keyType) {
+            const selectionStart = outputTextarea.selectionStart;
+            const selectionEnd = outputTextarea.selectionEnd;
 
-        const vowelMapping = { 'e': 0, 'u': 1, 'i': 2, 'a': 3, 'y': 4, 'o': 6 };
+            switch (keyType) {
+                case 'Backspace':
+                    if (selectionStart === selectionEnd && selectionStart > 0) {
+                        outputTextarea.value = outputTextarea.value.slice(0, selectionStart - 1) + outputTextarea.value.slice(selectionEnd);
+                        outputTextarea.selectionStart = outputTextarea.selectionEnd = selectionStart - 1;
+                    } else if (selectionStart !== selectionEnd) {
+                        outputTextarea.value = outputTextarea.value.slice(0, selectionStart) + outputTextarea.value.slice(selectionEnd);
+                        outputTextarea.selectionStart = outputTextarea.selectionEnd = selectionStart;
+                    }
+                    break;
+                case 'Space': insertAtCursor(' '); break;
+                case 'Enter': insertAtCursor('\n'); break;
+            }
+        }
+        
+        function clearSequence(resolve = false) {
+            if (sequenceTimer) clearTimeout(sequenceTimer);
+            sequenceTimer = null;
+            if (resolve && keySequence) {
+                const baseChar = physicalKeyMapping[keySequence];
+                if (baseChar && fidelGroups[baseChar] && fidelGroups[baseChar][5]) {
+                    insertAtCursor(fidelGroups[baseChar][5]);
+                }
+            }
+            keySequence = '';
+        }
 
-        let keySequence = '';
-        let sequenceTimer = null;
-        const SEQUENCE_TIMEOUT = 1200; // ms
+        function displayVariations(baseFidel) {
+            const variations = fidelGroups[baseFidel];
+            variationKeysContainer.innerHTML = '';
+            if (!variations) return;
+            
+            // Use a DocumentFragment for performance
+            const fragment = document.createDocumentFragment();
+            variations.forEach(variation => {
+                const keyElement = document.createElement('button');
+                keyElement.textContent = variation;
+                keyElement.classList.add('key');
+                keyElement.dataset.key = variation;
+                fragment.appendChild(keyElement);
+            });
+            variationKeysContainer.appendChild(fragment);
+        }
 
-        const keyboardLayout = [
-            Object.keys(fidelGroups).slice(0, 10),
-            Object.keys(fidelGroups).slice(10, 20),
-            Object.keys(fidelGroups).slice(20, 30),
-            Object.keys(fidelGroups).slice(30),
-            ['ጸ', 'ፀ', '፡', '።', '፣', '፤', '?', '!'], // Reduced punctuation row for space
-            ['Backspace', 'Space', 'Enter']
-        ];
+        // --- Event Handlers ---
+        function handleVirtualKeyboardClick(event) {
+            const keyElement = event.target.closest('.key');
+            if (!keyElement) return;
 
-        function insertAtCursor(textToInsert) {
-            const startPos = outputTextarea.selectionStart;
-            const endPos = outputTextarea.selectionEnd;
-            const currentVal = outputTextarea.value;
-            outputTextarea.value = currentVal.substring(0, startPos) + textToInsert + currentVal.substring(endPos);
-            const newCursorPos = startPos + textToInsert.length;
-            outputTextarea.selectionStart = outputTextarea.selectionEnd = newCursorPos;
-            outputTextarea.focus();
-        }
+            clearSequence();
+            const key = keyElement.dataset.key;
 
-        function processSpecialKey(keyType) {
-            const selectionStart = outputTextarea.selectionStart;
-            const selectionEnd = outputTextarea.selectionEnd;
+            if (key === 'Backspace' || key === 'Space' || key === 'Enter') {
+                processSpecialKey(key);
+            } else if (fidelGroups[key]) {
+                displayVariations(key);
+            } else {
+                insertAtCursor(key);
+                variationKeysContainer.innerHTML = '';
+            }
+        }
+        
+        function handlePhysicalKeyboardDown(event) {
+            // Ignore if modifier keys (except Shift) are pressed for combos
+            if (event.ctrlKey || event.altKey || event.metaKey) {
+                clearSequence();
+                return;
+            }
+            
+            const key = event.key;
 
-            switch (keyType) {
-                case 'Backspace':
-                    if (selectionStart === selectionEnd && selectionStart > 0) {
-                        outputTextarea.value = outputTextarea.value.slice(0, selectionStart - 1) + outputTextarea.value.slice(selectionEnd);
-                        outputTextarea.selectionStart = outputTextarea.selectionEnd = selectionStart - 1;
-                    } else if (selectionStart !== selectionEnd) {
-                        outputTextarea.value = outputTextarea.value.slice(0, selectionStart) + outputTextarea.value.slice(selectionEnd);
-                        outputTextarea.selectionStart = outputTextarea.selectionEnd = selectionStart;
-                    }
-                    break;
-                case 'Space': insertAtCursor(' '); break;
-                case 'Enter': insertAtCursor('\n'); break;
-            }
-        }
+            // Handle special keys directly
+            if (key === 'Backspace' || key === 'Enter' || key === ' ') {
+                event.preventDefault();
+                clearSequence(true); // Resolve any pending sequence first
+                processSpecialKey(key === ' ' ? 'Space' : key);
+                return;
+            }
+            
+            // Ignore navigation/function keys
+            if (key.length > 1 && key !== 'Shift') {
+                clearSequence(true);
+                return;
+            }
+            
+            // Shift is a modifier, not a character to type
+            if (key === 'Shift') return;
+            
+            event.preventDefault();
+            if (sequenceTimer) clearTimeout(sequenceTimer);
 
-        function clearSequence(resolve = false) {
-            if (sequenceTimer) clearTimeout(sequenceTimer);
-            sequenceTimer = null;
-            if (resolve && keySequence) {
-                const baseChar = physicalKeyMapping[keySequence];
-                if (baseChar && fidelGroups[baseChar] && fidelGroups[baseChar][5]) {
-                    insertAtCursor(fidelGroups[baseChar][5]);
-                }
-            }
-            keySequence = '';
-            // Do not clear variation keys here, it might be premature if user is still interacting
-        }
+            const newSequence = keySequence + key;
 
-        function displayVariations(baseFidel) {
-            const variations = fidelGroups[baseFidel];
-            variationKeysContainer.innerHTML = ''; // Clear previous variations
-            if (!variations) return;
+            // Case 1: Sequence is a vowel following a consonant
+            if (keySequence && physicalKeyMapping[keySequence] && vowelMapping.hasOwnProperty(key)) {
+                const baseFidel = physicalKeyMapping[keySequence];
+                const variations = fidelGroups[baseFidel];
+                const vowelIndex = vowelMapping[key];
+                if (variations && variations[vowelIndex]) {
+                    insertAtCursor(variations[vowelIndex]);
+                }
+                keySequence = '';
+                return;
+            }
 
-            const fragment = document.createDocumentFragment();
-            variations.forEach(variation => {
-                const keyElement = document.createElement('button');
-                keyElement.textContent = variation;
-                keyElement.classList.add('key');
-                keyElement.dataset.key = variation;
-                keyElement.setAttribute('role', 'button');
-                keyElement.setAttribute('aria-label', `Amharic character variation ${variation}`);
-                fragment.appendChild(keyElement);
-            });
-            variationKeysContainer.appendChild(fragment);
-        }
+            // Case 2: Labialized form (e.g., gwa -> ጓ)
+            if (keySequence && newSequence.endsWith('wa')) {
+                 const consonant = newSequence.slice(0, -2);
+                 const baseFidel = physicalKeyMapping[consonant];
+                 const variations = fidelGroups[baseFidel];
+                 if(variations && variations.length > 7) {
+                     insertAtCursor(variations[7]);
+                     keySequence = '';
+                     return;
+                 }
+            }
 
-        function handleVirtualKeyboardClick(event) {
-            const keyElement = event.target.closest('.key');
-            if (!keyElement) return;
+            // Case 3: The key itself is a direct mapping (e.g., '.', ',')
+            if (physicalKeyMapping[key] && !physicalKeyMapping[newSequence]) {
+                clearSequence(true); // Resolve previous sequence
+                if(physicalKeyMapping[key]) {
+                    const baseFidel = physicalKeyMapping[key];
+                    if(fidelGroups[baseFidel]) { // It's a consonant
+                        keySequence = key;
+                        displayVariations(baseFidel);
+                        sequenceTimer = setTimeout(() => clearSequence(true), SEQUENCE_TIMEOUT);
+                    } else { // It's a direct punctuation
+                        insertAtCursor(baseFidel);
+                        keySequence = '';
+                    }
+                }
+                return;
+            }
+            
+            // Default: It's a new consonant sequence
+            clearSequence(true);
+            keySequence = key;
+            const baseFidel = physicalKeyMapping[keySequence];
+            if (baseFidel && fidelGroups[baseFidel]) {
+                displayVariations(baseFidel);
+                sequenceTimer = setTimeout(() => clearSequence(true), SEQUENCE_TIMEOUT);
+            } else {
+                keySequence = ''; // Invalid sequence
+            }
+        }
+        
+        // --- Initialization ---
+        function init() {
+            // Use a DocumentFragment for performance
+            const fragment = document.createDocumentFragment();
 
-            clearSequence(); // Clear physical keyboard sequence
-            const key = keyElement.dataset.key;
+            keyboardLayout.forEach(row => {
+                const rowDiv = document.createElement('div');
+                rowDiv.className = 'keyboard-row';
+                row.forEach(keyChar => {
+                    const keyElement = document.createElement('button');
+                    keyElement.textContent = keyChar;
+                    keyElement.classList.add('key');
+                    keyElement.dataset.key = keyChar; // Use data attributes for clarity
+                    rowDiv.appendChild(keyElement);
+                });
+                fragment.appendChild(rowDiv);
+            });
+            keyboardContainer.appendChild(fragment);
 
-            if (key === 'Backspace' || key === 'Space' || key === 'Enter') {
-                processSpecialKey(key);
-                variationKeysContainer.innerHTML = ''; // Clear variations on special key press
-            } else if (fidelGroups[key]) { // Is it a base character that has variations?
-                displayVariations(key);
-                 // Optionally insert the first form or 6th form directly
-                 // insertAtCursor(fidelGroups[key][0]); // Example: insert 1st form
-            } else { // It's a variation key or a direct punctuation from the main layout
-                insertAtCursor(key);
-                variationKeysContainer.innerHTML = ''; // Clear variations after selection
-            }
-        }
+            // Add single, delegated event listener
+            keyboardContainer.addEventListener('click', handleVirtualKeyboardClick);
+            outputTextarea.addEventListener('keydown', handlePhysicalKeyboardDown);
+            
+            // Clear variations when clicking away
+            document.addEventListener('click', (event) => {
+                if (!keyboardContainer.contains(event.target) && event.target !== outputTextarea) {
+                    variationKeysContainer.innerHTML = '';
+                    clearSequence();
+                }
+            });
+        }
 
-        function handlePhysicalKeyboardDown(event) {
-            // Prevent default for most keys to avoid typing in textarea directly if we handle it
-            // Exception for Tab, Ctrl+C, Ctrl+V etc.
-            if (event.ctrlKey || event.altKey || event.metaKey) {
-                 if (event.key.toLowerCase() !== 'v' && event.key.toLowerCase() !== 'c' && event.key.toLowerCase() !== 'a' && event.key.toLowerCase() !== 'x' && event.key.toLowerCase() !== 'z' && event.key.toLowerCase() !== 'y' ) { // allow common shortcuts
-                    clearSequence();
-                 }
-                return; // Allow browser shortcuts
-            }
-            if (event.key === 'Tab') {
-                 clearSequence(true);
-                 return; // Allow tabbing
-            }
+        init();
+    });
+    </script>
+    
+    <footer> Developed by: Ahmedhaji Sadik | +251945033132  </footer>
 
-
-            const key = event.key;
-
-            if (key === 'Backspace' || key === 'Enter' || key === ' ') {
-                event.preventDefault();
-                clearSequence(true);
-                processSpecialKey(key === ' ' ? 'Space' : key);
-                variationKeysContainer.innerHTML = '';
-                return;
-            }
-
-            if (key.length > 1 && key !== 'Shift') { // Ignore navigation/function keys other than shift
-                clearSequence(true);
-                variationKeysContainer.innerHTML = '';
-                return;
-            }
-            if (key === 'Shift') return; // Shift is a modifier
-
-            event.preventDefault();
-            if (sequenceTimer) clearTimeout(sequenceTimer);
-
-            const newSequence = keySequence + key;
-
-            // Case 1: Vowel follows a consonant
-            if (keySequence && physicalKeyMapping[keySequence] && vowelMapping.hasOwnProperty(key.toLowerCase())) {
-                const baseFidel = physicalKeyMapping[keySequence];
-                const variations = fidelGroups[baseFidel];
-                const vowelIndex = vowelMapping[key.toLowerCase()];
-                if (variations && variations[vowelIndex]) {
-                    insertAtCursor(variations[vowelIndex]);
-                }
-                keySequence = '';
-                variationKeysContainer.innerHTML = '';
-                return;
-            }
-
-            // Case 2: Labialized form (e.g., gwa -> ጓ)
-            // Check for consonant + 'w' + 'a' sequence
-            if (keySequence.length === 1 && key.toLowerCase() === 'w') { // Consonant + 'w'
-                 keySequence += key.toLowerCase(); // Now keySequence is like 'bw'
-                 sequenceTimer = setTimeout(() => clearSequence(true), SEQUENCE_TIMEOUT); // Wait for 'a' or timeout
-                 return;
-            }
-            if (keySequence.length === 2 && keySequence.endsWith('w') && key.toLowerCase() === 'a') { // Consonant + 'w' + 'a'
-                const consonant = keySequence.slice(0, -1); // Get the base consonant (e.g., 'b' from 'bw')
-                const baseFidel = physicalKeyMapping[consonant];
-                const variations = fidelGroups[baseFidel];
-                if (variations && variations.length > 7 && variations[7]) { // Labialized is typically the 8th item (index 7)
-                    insertAtCursor(variations[7]);
-                    keySequence = '';
-                    variationKeysContainer.innerHTML = '';
-                    return;
-                }
-            }
-
-
-            // Case 3: The key itself is a direct mapping (e.g., '.', ',') or a new consonant
-            clearSequence(true); // Resolve previous consonant if any, then process new key
-
-            const mappedChar = physicalKeyMapping[key]; // Handles shift variants automatically due to 'key' value
-            if (mappedChar) {
-                if (fidelGroups[mappedChar]) { // It's a consonant
-                    keySequence = key; // Store the original key pressed (e.g. 'h' or 'H')
-                    displayVariations(mappedChar);
-                    sequenceTimer = setTimeout(() => {
-                        clearSequence(true);
-                        variationKeysContainer.innerHTML = ''; // Clear variations on timeout
-                    }, SEQUENCE_TIMEOUT);
-                } else { // It's direct punctuation or symbol
-                    insertAtCursor(mappedChar);
-                    keySequence = '';
-                    variationKeysContainer.innerHTML = '';
-                }
-            } else {
-                keySequence = ''; // Invalid sequence start
-                variationKeysContainer.innerHTML = '';
-            }
-        }
-
-        function init() {
-            const baseKeysFragment = document.createDocumentFragment();
-            keyboardLayout.forEach(row => {
-                const rowDiv = document.createElement('div');
-                rowDiv.className = 'keyboard-row';
-                row.forEach(keyChar => {
-                    const keyElement = document.createElement('button');
-                    keyElement.textContent = keyChar;
-                    keyElement.classList.add('key');
-                    keyElement.dataset.key = keyChar;
-                    keyElement.setAttribute('role', 'button');
-
-                    let ariaLabelText = keyChar;
-                    if (fidelGroups[keyChar]) {
-                        ariaLabelText = `Amharic letter ${keyChar}`;
-                    } else if (keyChar === 'Backspace' || keyChar === 'Space' || keyChar === 'Enter') {
-                        ariaLabelText = keyChar;
-                    } else {
-                        ariaLabelText = `Character ${keyChar}`;
-                    }
-                    keyElement.setAttribute('aria-label', ariaLabelText);
-                    rowDiv.appendChild(keyElement);
-                });
-                baseKeysFragment.appendChild(rowDiv);
-            });
-            // keyboardContainer already contains variationKeysContainer from HTML
-            keyboardContainer.appendChild(baseKeysFragment);
-
-
-            keyboardContainer.addEventListener('click', handleVirtualKeyboardClick);
-            outputTextarea.addEventListener('keydown', handlePhysicalKeyboardDown);
-
-            document.addEventListener('click', (event) => {
-                if (!keyboardContainer.contains(event.target) && event.target !== outputTextarea && !variationKeysContainer.contains(event.target)) {
-                    variationKeysContainer.innerHTML = '';
-                    clearSequence(); // Also clear physical key sequence
-                }
-            });
-
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-        }
-
-        init();
-    });
-    </script>
 </body>
 </html>
