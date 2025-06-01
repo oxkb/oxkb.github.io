@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Online Amharic Keyboard for PC የአማርኛ ኪቦርድ) - Type Amharic Easily</title>
+    <title>Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily</title>
 
     <meta name="description" content="A free and easy-to-use online Amharic keyboard (Fidel keyboard) to type Amharic letters and characters directly in your browser. Supports physical keyboard input.">
     <meta name="keywords" content="Amharic keyboard, online Amharic keyboard, Fidel keyboard, type Amharic, አማርኛ ኪቦርድ, Ethiopian keyboard, Geez keyboard, free Amharic typing">
@@ -23,6 +23,7 @@
     <meta name="google-site-verification" content="YOykyV7jEUg5Nj2GeyhHUcewf9WW-Ruyke1v23KePrY" />
 
     <style>
+        /* For improved performance and caching, it's recommended to move this CSS to an external file (e.g., style.css) */
         body {
             font-family: 'Noto Sans Ethiopic', 'Nyala', sans-serif;
             display: flex;
@@ -30,15 +31,17 @@
             align-items: center;
             padding: 10px;
             background-color: #f4f4f4;
+            margin: 0;
             min-height: 100vh;
             box-sizing: border-box;
         }
 
-        h3 {
+        h1 {
             color: #333;
             margin-bottom: 20px;
             text-align: center;
-            margin-top: 0
+            margin-top: 0;
+            font-size: 1.8em;
         }
 
         .main-layout {
@@ -59,8 +62,8 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            flex: 1 1 450px;
-            max-width: 600px;
+            flex: 1 1 550px; /* Adjusted flex-basis */
+            max-width: 700px;
             align-self: stretch;
         }
 
@@ -71,32 +74,35 @@
             border-radius: 5px;
             font-family: inherit;
             flex: 1 1 45%;
-
-            min-height: 200px;
+            min-height: 250px;
             box-sizing: border-box;
+            resize: vertical;
         }
 
         .keyboard-row {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 5px;
+            flex-wrap: nowrap; /* Prevent wrapping for consistent rows */
+            gap: 6px;
             min-height: 45px;
         }
 
         .key {
             padding: 10px 15px;
             font-size: 1.2em;
-            min-width: 40px;
+            flex: 1; /* Allow keys to grow evenly */
             text-align: center;
             background-color: #fff;
             border: 1px solid #ccc;
+            border-bottom-width: 3px;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.1s;
             font-family: inherit;
             user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .key:hover {
@@ -105,28 +111,31 @@
 
         .key:active {
             background-color: #dcdcdc;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+            border-bottom-width: 1px;
+            transform: translateY(2px);
+        }
+        
+        /* Special keys styling */
+        .key[data-key="Backspace"], .key[data-key="Enter"] {
+            flex-grow: 1.5;
+            font-size: 0.9em;
+        }
+        .key[data-key="Space"] {
+            flex-grow: 8;
+        }
+        .key[data-key="Tab"] {
+            flex-grow: 1.2;
+            font-size: 0.9em;
         }
 
-        .key-special {
-            padding: 10px 20px;
-        }
-
-        .key-space {
-            flex-grow: 4;
-        }
-
-        .key-backspace {
-            flex-grow: 1;
-        }
-
-        #variation-keys:not(:empty) {
+        #variation-keys {
             background-color: #f8f8f8;
             padding: 5px;
             border-radius: 5px;
             margin-bottom: 5px;
+            min-height: 40px;
         }
-
+        
         #variation-keys:empty {
             display: none;
         }
@@ -136,439 +145,320 @@
             max-width: 1200px;
             margin-top: 15px;
             text-align: left;
-            font-size: 1.1em; /* Small font */
-            color: #000;
-            background-color: #fffacd; /* Yellow background */
-            padding: 10px;
-            border-radius: 5px;
+            font-size: 1em;
+            color: #333;
+            background-color: #fffacd;
+            padding: 15px;
+            border-radius: 8px;
             border: 1px solid #e0c240;
-            line-height: 1.4;
+            line-height: 1.6;
         }
         .keyboard-info strong {
             font-weight: bold;
+            color: #000;
         }
-        .keyboard-info span {
-            display: inline-block;
-            margin-right: 15px;
-            white-space: nowrap; /* Keep items on one line if space allows */
+        .keyboard-info code {
+            background-color: #e0e0e0;
+            padding: 2px 5px;
+            border-radius: 3px;
         }
-
 
         @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 1.5em;
-                margin-bottom: 15px;
-            }
-
+            body { padding: 10px; }
+            h1 { font-size: 1.5em; }
             .main-layout {
                 flex-direction: column;
-                align-items: center;
                 width: 100%;
                 gap: 15px;
             }
-
-            #keyboard-container {
+            #keyboard-container, textarea {
                 flex-basis: auto;
                 width: 100%;
                 max-width: 100%;
-                padding: 10px;
-                margin-bottom: 15px;
                 align-self: auto;
             }
-
-            textarea {
-                flex-basis: auto;
-                width: 100%;
-                max-width: 100%;
-                min-height: 150px;
-                font-size: 1.3em;
-            }
-
-            .key {
-                padding: 8px 10px;
-                font-size: 1.1em;
-                min-width: 35px;
-            }
-
-            .key-space {
-                flex-grow: 3;
-            }
-
-            .keyboard-info {
-                font-size: 0.85em; /* Smaller font on small screens */
-                padding: 8px;
-                width: 100%;
-            }
-            .keyboard-info span {
-                margin-right: 10px;
-            }
+            textarea { min-height: 150px; font-size: 1.3em; }
+            .key { padding: 8px 10px; font-size: 1.1em; }
+            .keyboard-info { font-size: 0.9em; }
         }
 
         @media (max-width: 480px) {
-            .key {
-                padding: 6px 8px;
-                font-size: 1em;
-                min-width: 30px;
-            }
-            h1 {
-                font-size: 1.3em;
-            }
-            textarea {
-                min-height: 120px;
-                font-size: 1.2em;
-            }
-            .keyboard-info {
-                font-size: 0.8em; /* Even smaller font on very small screens */
-                padding: 6px;
-            }
-            .keyboard-info span {
-                display: block; /* Stack items on very small screens */
-                margin-right: 0;
-            }
+            h1 { font-size: 1.3em; }
+            .key { font-size: 1em; }
+            textarea { min-height: 120px; font-size: 1.2em; }
+            .keyboard-info { font-size: 0.85em; }
+            .keyboard-row { gap: 4px; }
         }
     </style>
 </head>
 <body>
 
-    <h3>Online Amharic Keyboard (የአማርኛ ኪቦርድ)</h3>
+    <h1>Online Amharic Keyboard (የአማርኛ ኪቦርድ)</h1>
 
     <div class="main-layout">
-        <div id="keyboard-container">
-            <div id="variation-keys" class="keyboard-row">
-            </div>
-            <div id="base-keys" class="keyboard-row">
-            </div>
-        </div>
-
         <textarea id="output" rows="8" placeholder="Type Amharic here..."></textarea>
-
+        <div id="keyboard-container">
+            <div id="variation-keys" class="keyboard-row"></div>
+            </div>
     </div>
-<div class="keyboard-info">  
-     Using physical keyboard: be = በ bu= ቡ bi = ቢ ba = ባ by = ቤ b = ብ lo = ቦ bwa = ቧ
-     ` = ሸ , = ፣ | shift + , = ጸ . = ። | shift + . = ፀ h = ሀ | Shift + h = ሐ s = ሰ |
-    Shift + s = ሠ t = ተ | Shift + t = ጠ c = ቸ | Shift + c = ጨ v = ቨ | Shift + v = ኀ n = ነ |
-    Shift + n = ኘ k = ከ | Shift + k = ኸ z = ዘ | Shift + z = ዠ p = ፐ | Shift + p = ጰ| Shift + x = ዐ
-    l = ለ, m = መ, r = ረ, x = አ, q = ቀ, b = በ, w = ወ, y = የ, d = ደ, j = ጀ, g = ገ, f = ፈ
- </div>
+
+    <div class="keyboard-info">
+        <strong>How to use your physical keyboard:</strong><br>
+        Type a consonant (like <code>b</code>) followed by a vowel (<code>e, u, i, a, y, o</code>) to get different forms: <code>be</code> &rarr; በ, <code>bu</code> &rarr; ቡ, <code>bi</code> &rarr; ቢ, <code>ba</code> &rarr; ባ, <code>by</code> &rarr; ቤ, <code>bo</code> &rarr; ቦ.<br>
+        Press a consonant key once to get the 6th form (e.g., <code>b</code> &rarr; ብ). For labialized forms, type 'wa' after the consonant (e.g., <code>bwa</code> &rarr; ቧ).<br>
+        <strong>Special Characters:</strong> <code>h</code> &rarr; ሀ, <code>H</code> (Shift+h) &rarr; ሐ | <code>s</code> &rarr; ሰ, <code>S</code> (Shift+s) &rarr; ሠ | <code>t</code> &rarr; ተ, <code>T</code> (Shift+t) &rarr; ጠ | <code>c</code> &rarr; ቸ, <code>C</code> (Shift+c) &rarr; ጨ | <code>n</code> &rarr; ነ, <code>N</code> (Shift+n) &rarr; ኘ | <code>z</code> &rarr; ዘ, <code>Z</code> (Shift+z) &rarr; ዠ | <code>`</code> &rarr; ሸ | <code>.</code> &rarr; ። | <code>,</code> &rarr; ፣ | Shift+. &rarr; ፀ | Shift+, &rarr; ጸ
+    </div>
+    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const outputTextarea = document.getElementById('output');
-            const baseKeysContainer = document.getElementById('base-keys');
-            const variationKeysContainer = document.getElementById('variation-keys');
-            const punctuationKeysContainer = document.getElementById('punctuation-keys');
-            const symbolEmojiKeysContainer = document.getElementById('symbol-emoji-keys');
-            const numberKeysContainer = document.getElementById('number-keys');
-            const specialKeysContainer = document.getElementById('special-keys');
+    document.addEventListener('DOMContentLoaded', () => {
+        const outputTextarea = document.getElementById('output');
+        const keyboardContainer = document.getElementById('keyboard-container');
+        const variationKeysContainer = document.getElementById('variation-keys');
 
-            const fidelGroups = {
-                'ሀ': ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ', 'ኋ'], 'ለ': ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ', 'ሏ'],
-                'ሐ': ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ', 'ሗ'], 'መ': ['መ', 'ሙ', 'ሚ', 'ማ', 'ሜ', 'ም', 'ሞ', 'ሟ'],
-                'ሠ': ['ሠ', 'ሡ', 'ሢ', 'ሣ', 'ሤ', 'ሥ', 'ሦ', 'ሧ'], 'ረ': ['ረ', 'ሩ', 'ሪ', 'ራ', 'ሬ', 'ር', 'ሮ', 'ሯ'],
-                'ሰ': ['ሰ', 'ሱ', 'ሲ', 'ሳ', 'ሴ', 'ስ', 'ሶ', 'ሷ'], 'ሸ': ['ሸ', 'ሹ', 'ሺ', 'ሻ', 'ሼ', 'ሽ', 'ሾ', 'ሿ'],
-                'ቀ': ['ቀ', 'ቁ', 'ቂ', 'ቃ', 'ቄ', 'ቅ', 'ቆ', 'ቋ'],
-                'በ': ['በ', 'ቡ', 'ቢ', 'ባ', 'ቤ', 'ብ', 'ቦ', 'ቧ'], 'ተ': ['ተ', 'ቱ', 'ቲ', 'ታ', 'ቴ', 'ት', 'ቶ', 'ቷ'],
-                'ቸ': ['ቸ', 'ቹ', 'ቺ', 'ቻ', 'ቼ', 'ች', 'ቾ', 'ቿ'], 'ኀ': ['ኀ', 'ኁ', 'ኂ', 'ኃ', 'ኄ', 'ኅ', 'ኆ', 'ኋ'],
-                'ነ': ['ነ', 'ኑ', 'ኒ', 'ና', 'ኔ', 'ን', 'ኖ', 'ኗ'], 'ኘ': ['ኘ', 'ኙ', 'ኚ', 'ኛ', 'ኜ', 'ኝ', 'ኞ', 'ኟ'],
-                'አ': ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'], 'ከ': ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ', 'ኳ'],
-                'ኸ': ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ','ዃ'],
-                'ወ': ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'], 'ዐ': ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'],
-                'ዘ': ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ', 'ዟ'], 'ዠ': ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ', 'ዧ'],
-                'የ': ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'],
-                'ደ': ['ደ', 'ዱ', 'ዲ', 'ዳ', 'ዴ', 'ድ', 'ዶ', 'ዷ'], 'ጀ': ['ጀ', 'ጁ', 'ጂ', 'ጃ', 'ጄ', 'ጅ', 'ጆ', 'ጇ'],
-                'ገ': ['ገ', 'ጉ', 'ጊ', 'ጋ', 'ጌ', 'ግ', 'ጎ', 'ጓ'],
-                'ጠ': ['ጠ', 'ጡ', 'ጢ', 'ጣ', 'ጤ', 'ጥ', 'ጦ', 'ጧ'], 'ጨ': ['ጨ', 'ጩ', 'ጪ', 'ጫ', 'ጬ', 'ጭ', 'ጮ', 'ጯ'],
-                'ጰ': ['ጰ', 'ጱ', 'ጲ', 'ጳ', 'ጴ', 'ጵ', 'ጶ', 'ጷ'], 'ጸ': ['ጸ', 'ጹ', 'ጺ', 'ጻ', 'ጼ', 'ጽ', 'ጾ', 'ጿ'],
-                'ፀ': ['ፀ', 'ፁ', 'ፂ', 'ፃ', 'ፄ', 'ፅ', 'ፆ', 'ፇ'], 'ፈ': ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ', 'ፏ'],
-                'ፐ': ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ', 'ፗ']
-            };
-            const punctuationVirtual = ['፡', '።', '፣', '፤', '፥', '፦', '?', '(', ')', '!', '?'];
-            const specialKeysVirtual = ['Backspace', 'Space', 'Enter'];
-            const symbolsAndEmojis = [ '<', '>' ];
+        const fidelGroups = {
+            'ሀ': ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ'], 'ለ': ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ', 'ሏ'],
+            'ሐ': ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ', 'ሗ'], 'መ': ['መ', 'ሙ', 'ሚ', 'ማ', 'ሜ', 'ም', 'ሞ', 'ሟ'],
+            'ሠ': ['ሠ', 'ሡ', 'ሢ', 'ሣ', 'ሤ', 'ሥ', 'ሦ', 'ሧ'], 'ረ': ['ረ', 'ሩ', 'ሪ', 'ራ', 'ሬ', 'ር', 'ሮ', 'ሯ'],
+            'ሰ': ['ሰ', 'ሱ', 'ሲ', 'ሳ', 'ሴ', 'ስ', 'ሶ', 'ሷ'], 'ሸ': ['ሸ', 'ሹ', 'ሺ', 'ሻ', 'ሼ', 'ሽ', 'ሾ', 'ሿ'],
+            'ቀ': ['ቀ', 'ቁ', 'ቂ', 'ቃ', 'ቄ', 'ቅ', 'ቆ', 'ቋ'], 'በ': ['በ', 'ቡ', 'ቢ', 'ባ', 'ቤ', 'ብ', 'ቦ', 'ቧ'],
+            'ቨ': ['ቨ', 'ቩ', 'ቪ', 'ቫ', 'ቬ', 'ቭ', 'ቮ', 'ቯ'], 'ተ': ['ተ', 'ቱ', 'ቲ', 'ታ', 'ቴ', 'ት', 'ቶ', 'ቷ'],
+            'ቸ': ['ቸ', 'ቹ', 'ቺ', 'ቻ', 'ቼ', 'ች', 'ቾ', 'ቿ'], 'ኀ': ['ኀ', 'ኁ', 'ኂ', 'ኃ', 'ኄ', 'ኅ', 'ኆ', 'ኋ'],
+            'ነ': ['ነ', 'ኑ', 'ኒ', 'ና', 'ኔ', 'ን', 'ኖ', 'ኗ'], 'ኘ': ['ኘ', 'ኙ', 'ኚ', 'ኛ', 'ኜ', 'ኝ', 'ኞ', 'ኟ'],
+            'አ': ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'], 'ከ': ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ', 'ኳ'],
+            'ኸ': ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ', 'ዃ'], 'ወ': ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'],
+            'ዐ': ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'], 'ዘ': ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ', 'ዟ'],
+            'ዠ': ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ', 'ዧ'], 'የ': ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'],
+            'ደ': ['ደ', 'ዱ', 'ዲ', 'ዳ', 'ዴ', 'ድ', 'ዶ', 'ዷ'], 'ጀ': ['ጀ', 'ጁ', 'ጂ', 'ጃ', 'ጄ', 'ጅ', 'ጆ', 'ጇ'],
+            'ገ': ['ገ', 'ጉ', 'ጊ', 'ጋ', 'ጌ', 'ግ', 'ጎ', 'ጓ'], 'ጠ': ['ጠ', 'ጡ', 'ጢ', 'ጣ', 'ጤ', 'ጥ', 'ጦ', 'ጧ'],
+            'ጨ': ['ጨ', 'ጩ', 'ጪ', 'ጫ', 'ጬ', 'ጭ', 'ጮ', 'ጯ'], 'ጰ': ['ጰ', 'ጱ', 'ጲ', 'ጳ', 'ጴ', 'ጵ', 'ጶ', 'ጷ'],
+            'ጸ': ['ጸ', 'ጹ', 'ጺ', 'ጻ', 'ጼ', 'ጽ', 'ጾ', 'ጿ'], 'ፀ': ['ፀ', 'ፁ', 'ፂ', 'ፃ', 'ፄ', 'ፅ', 'ፆ'],
+            'ፈ': ['ፈ', 'ፉ', 'ፊ', 'ፋ', 'ፌ', 'ፍ', 'ፎ', 'ፏ'], 'ፐ': ['ፐ', 'ፑ', 'ፒ', 'ፓ', 'ፔ', 'ፕ', 'ፖ']
+        };
 
-            let keySequence = '';
-            let sequenceTimer = null;
-            const SEQUENCE_TIMEOUT = 2000;
+        const physicalKeyMapping = {
+            'h': 'ሀ', 'l': 'ለ', 'm': 'መ', 'r': 'ረ', 's': 'ሰ', 'q': 'ቀ', 'b': 'በ',
+            't': 'ተ', 'c': 'ቸ', 'n': 'ነ', 'x': 'አ', 'k': 'ከ', 'w': 'ወ', 'z': 'ዘ',
+            'y': 'የ', 'd': 'ደ', 'j': 'ጀ', 'g': 'ገ', 'f': 'ፈ', 'p': 'ፐ', 'v': 'ቨ',
+            // Shift variants
+            'H': 'ሐ', 'S': 'ሠ', 'T': 'ጠ', 'C': 'ጨ', 'N': 'ኘ', 'K': 'ኸ', 'Z': 'ዠ',
+            'V': 'ኀ', 'P': 'ጰ', 'X': 'ዐ',
+            // Punctuation and others
+            '`': 'ሸ', ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?',
+            // Shifted punctuation
+            '<': 'ጸ', '>': 'ፀ'
+        };
 
-            const sequenceMapping = {};
-            const potentialPrefixes = new Set();
-            const baseConsonantToSixthForm = {};
-            let lastDisplayedVariationsBase = null;
+        const vowelMapping = { 'e': 0, 'u': 1, 'i': 2, 'a': 3, 'y': 4, 'o': 6 };
+        
+        let keySequence = '';
+        let sequenceTimer = null;
+        const SEQUENCE_TIMEOUT = 1200; // ms
 
-            const baseKeyTriggers = {
-                'h': 'ሀ', 'l': 'ለ', 'H': 'ሐ', 'm': 'መ', 'S': 'ሠ', 'r': 'ረ', 's': 'ሰ',
-                '~': 'ሸ', '`': 'ጸ', ''': 'ፀ',
-                'q': 'ቀ', 'b': 'በ', 'v': 'ቨ', 't': 'ተ', 'c': 'ቸ',
-                'V': 'ኀ',
-                'n': 'ነ', 'N': 'ኘ',
-                'x': 'አ',
-                'k': 'ከ', 'K': 'ኸ', 'w': 'ወ', 'X': 'ዐ', 'z': 'ዘ', 'Z': 'ዠ',
-                'Y': 'የ',
-                'd': 'ደ', 'j': 'ጀ', 'g': 'ገ', 'T': 'ጠ', 'C': 'ጨ', 'P': 'ጰ', 'f': 'ፈ', 'p': 'ፐ'
-            };
+        // --- Keyboard Layout Definition ---
+        const keyboardLayout = [
+            Object.keys(fidelGroups).slice(0, 10),
+            Object.keys(fidelGroups).slice(10, 20),
+            Object.keys(fidelGroups).slice(20, 30),
+            Object.keys(fidelGroups).slice(30),
+            ['ጸ', 'ፀ', '`', '፡', '።', '፣', '፤', '?', '!', '(', ')'],
+            ['Backspace', 'Space', 'Enter']
+        ];
+        
+        // --- Core Functions ---
+        function insertAtCursor(textToInsert) {
+            const startPos = outputTextarea.selectionStart;
+            const endPos = outputTextarea.selectionEnd;
+            const currentVal = outputTextarea.value;
+            outputTextarea.value = currentVal.substring(0, startPos) + textToInsert + currentVal.substring(endPos);
+            const newCursorPos = startPos + textToInsert.length;
+            outputTextarea.selectionStart = outputTextarea.selectionEnd = newCursorPos;
+            outputTextarea.focus();
+        }
 
-            for (const keyTrigger in baseKeyTriggers) {
-                const baseFidel = baseKeyTriggers[keyTrigger];
-                const variations = fidelGroups[baseFidel];
-                if (!variations || variations.length < 7) continue;
+        function processSpecialKey(keyType) {
+            const selectionStart = outputTextarea.selectionStart;
+            const selectionEnd = outputTextarea.selectionEnd;
 
-                potentialPrefixes.add(keyTrigger);
-
-                sequenceMapping[keyTrigger + 'e'] = variations[0];
-                sequenceMapping[keyTrigger + 'u'] = variations[1];
-                sequenceMapping[keyTrigger + 'i'] = variations[2];
-                sequenceMapping[keyTrigger + 'a'] = variations[3];
-                sequenceMapping[keyTrigger + 'y'] = variations[4];
-                sequenceMapping[keyTrigger + 'o'] = variations[6];
-
-                if (variations.length > 7 && variations[7]) {
-                    const labializedSequence = keyTrigger + 'wa';
-                    sequenceMapping[labializedSequence] = variations[7];
-                    potentialPrefixes.add(keyTrigger + 'w');
+            switch (keyType) {
+                case 'Backspace':
+                    if (selectionStart === selectionEnd && selectionStart > 0) {
+                        outputTextarea.value = outputTextarea.value.slice(0, selectionStart - 1) + outputTextarea.value.slice(selectionEnd);
+                        outputTextarea.selectionStart = outputTextarea.selectionEnd = selectionStart - 1;
+                    } else if (selectionStart !== selectionEnd) {
+                        outputTextarea.value = outputTextarea.value.slice(0, selectionStart) + outputTextarea.value.slice(selectionEnd);
+                        outputTextarea.selectionStart = outputTextarea.selectionEnd = selectionStart;
+                    }
+                    break;
+                case 'Space': insertAtCursor(' '); break;
+                case 'Enter': insertAtCursor('\n'); break;
+            }
+        }
+        
+        function clearSequence(resolve = false) {
+            if (sequenceTimer) clearTimeout(sequenceTimer);
+            sequenceTimer = null;
+            if (resolve && keySequence) {
+                const baseChar = physicalKeyMapping[keySequence];
+                if (baseChar && fidelGroups[baseChar] && fidelGroups[baseChar][5]) {
+                    insertAtCursor(fidelGroups[baseChar][5]);
                 }
-
-                baseConsonantToSixthForm[keyTrigger] = variations[5];
             }
+            keySequence = '';
+        }
 
-            const directMappings = {
-                '.': '።', ',': '፣', ';': '፤', ':': '፡', '?': '?', '<': 'ሸ', '>': 'ፀ'
-            };
-            for (const key in directMappings) {
-                sequenceMapping[key] = directMappings[key];
-            }
-
-            function createKey(keyChar, container, clickHandler, cssClasses = [], ariaLabel = null) {
+        function displayVariations(baseFidel) {
+            const variations = fidelGroups[baseFidel];
+            variationKeysContainer.innerHTML = '';
+            if (!variations) return;
+            
+            // Use a DocumentFragment for performance
+            const fragment = document.createDocumentFragment();
+            variations.forEach(variation => {
                 const keyElement = document.createElement('button');
-                keyElement.textContent = keyChar;
-                keyElement.classList.add('key', ...cssClasses);
-                keyElement.addEventListener('click', clickHandler);
+                keyElement.textContent = variation;
+                keyElement.classList.add('key');
+                keyElement.dataset.key = variation;
+                fragment.appendChild(keyElement);
+            });
+            variationKeysContainer.appendChild(fragment);
+        }
 
-                keyElement.setAttribute('aria-label', ariaLabel || keyChar);
+        // --- Event Handlers ---
+        function handleVirtualKeyboardClick(event) {
+            const keyElement = event.target.closest('.key');
+            if (!keyElement) return;
 
-                container.appendChild(keyElement);
-                return keyElement;
-            }
+            clearSequence();
+            const key = keyElement.dataset.key;
 
-            function resolveSequence() {
-                if (sequenceTimer) {
-                    clearTimeout(sequenceTimer);
-                    sequenceTimer = null;
-                }
-                if (baseConsonantToSixthForm[keySequence]) {
-                    insertAtCursor(outputTextarea, baseConsonantToSixthForm[keySequence]);
-                }
-                keySequence = '';
-            }
-
-            function clearSequenceStateOnly() {
-                if (sequenceTimer) clearTimeout(sequenceTimer);
-                resolveSequence();
-                keySequence = '';
-            }
-
-            function displayVariations(baseFidel) {
-                const variations = fidelGroups[baseFidel];
+            if (key === 'Backspace' || key === 'Space' || key === 'Enter') {
+                processSpecialKey(key);
+            } else if (fidelGroups[key]) {
+                displayVariations(key);
+            } else {
+                insertAtCursor(key);
                 variationKeysContainer.innerHTML = '';
-
-                if (variations) {
-                    variations.forEach(variation => {
-                        createKey(variation, variationKeysContainer, handleCharKeyClick);
-                    });
-                    lastDisplayedVariationsBase = baseFidel;
-                } else {
-                    lastDisplayedVariationsBase = null;
-                }
             }
-
-            function handleBaseKeyClick(event) {
-                clearSequenceStateOnly();
-                const baseKey = event.target.textContent;
-                displayVariations(baseKey);
+        }
+        
+        function handlePhysicalKeyboardDown(event) {
+            // Ignore if modifier keys (except Shift) are pressed for combos
+            if (event.ctrlKey || event.altKey || event.metaKey) {
+                clearSequence();
+                return;
             }
+            
+            const key = event.key;
 
-            function handleCharKeyClick(event) {
-                clearSequenceStateOnly();
-                const char = event.target.textContent;
-                insertAtCursor(outputTextarea, char);
+            // Handle special keys directly
+            if (key === 'Backspace' || key === 'Enter' || key === ' ') {
+                event.preventDefault();
+                clearSequence(true); // Resolve any pending sequence first
+                processSpecialKey(key === ' ' ? 'Space' : key);
+                return;
             }
-
-            function handleSpecialKeyClick(event) {
-                clearSequenceStateOnly();
-                const keyType = event.target.textContent;
-                processSpecialKey(keyType);
-                outputTextarea.focus();
+            
+            // Ignore navigation/function keys
+            if (key.length > 1 && key !== 'Shift') {
+                clearSequence(true);
+                return;
             }
+            
+            // Shift is a modifier, not a character to type
+            if (key === 'Shift') return;
+            
+            event.preventDefault();
+            if (sequenceTimer) clearTimeout(sequenceTimer);
 
-            function insertAtCursor(textarea, textToInsert) {
-                const startPos = textarea.selectionStart;
-                const endPos = textarea.selectionEnd;
-                const currentVal = textarea.value;
-                textarea.value = currentVal.substring(0, startPos) + textToInsert + currentVal.substring(endPos);
-                const newCursorPos = startPos + textToInsert.length;
-                textarea.selectionStart = textarea.selectionEnd = newCursorPos;
-                textarea.focus();
-            }
+            const newSequence = keySequence + key;
 
-            function processSpecialKey(keyType) {
-                const currentVal = outputTextarea.value;
-                const selectionStart = outputTextarea.selectionStart;
-                const selectionEnd = outputTextarea.selectionEnd;
-
-                switch (keyType) {
-                    case 'Backspace':
-                        if (selectionStart === selectionEnd && selectionStart > 0) {
-                            outputTextarea.value = currentVal.substring(0, selectionStart - 1) + currentVal.substring(selectionEnd);
-                            outputTextarea.selectionStart = outputTextarea.selectionEnd = selectionStart - 1;
-                        } else if (selectionStart !== selectionEnd) {
-                            outputTextarea.value = currentVal.substring(0, selectionStart) + currentVal.substring(selectionEnd);
-                            outputTextarea.selectionStart = outputTextarea.selectionEnd = selectionStart;
-                        }
-                        break;
-                    case 'Space': case ' ':
-                        insertAtCursor(outputTextarea, ' ');
-                        break;
-                    case 'Enter':
-                        insertAtCursor(outputTextarea, '\n');
-                        break;
+            // Case 1: Sequence is a vowel following a consonant
+            if (keySequence && physicalKeyMapping[keySequence] && vowelMapping.hasOwnProperty(key)) {
+                const baseFidel = physicalKeyMapping[keySequence];
+                const variations = fidelGroups[baseFidel];
+                const vowelIndex = vowelMapping[key];
+                if (variations && variations[vowelIndex]) {
+                    insertAtCursor(variations[vowelIndex]);
                 }
-            }
-
-            outputTextarea.addEventListener('keydown', (event) => {
-                if (event.ctrlKey || event.altKey || event.metaKey) {
-                    clearSequenceStateOnly();
-                    return;
-                }
-
-                const key = event.key;
-
-                if (key === 'Backspace' || key === 'Enter' || key === ' ') {
-                    event.preventDefault();
-                    clearSequenceStateOnly();
-                    processSpecialKey(key);
-                    return;
-                }
-
-                if (key.startsWith('Arrow') || key === 'Tab' || key === 'Escape' ||
-                    key === 'Home' || key === 'End' || key === 'PageUp' || key === 'PageDown' ||
-                    key === 'Delete' || key.startsWith('F') || key === 'Shift' ||
-                    key === 'Control' || key === 'Alt' || key === 'Meta' || key === 'CapsLock') {
-                    resolveSequence();
-                    return;
-                }
-
-                if (sequenceTimer) {
-                    clearTimeout(sequenceTimer);
-                    sequenceTimer = null;
-                }
-
-                const keyForMapping = key;
-                const potentialNewSequence = keySequence + keyForMapping;
-
-                if (sequenceMapping.hasOwnProperty(potentialNewSequence)) {
-                    event.preventDefault();
-                    insertAtCursor(outputTextarea, sequenceMapping[potentialNewSequence]);
-                    keySequence = '';
-                    return;
-                }
-
-                if (potentialPrefixes.has(potentialNewSequence)) {
-                    event.preventDefault();
-                    keySequence = potentialNewSequence;
-                    sequenceTimer = setTimeout(resolveSequence, SEQUENCE_TIMEOUT);
-
-                    let baseTrigger = potentialNewSequence;
-                    if (potentialNewSequence.endsWith('w') && potentialNewSequence.length > 1) {
-                        baseTrigger = potentialNewSequence.slice(0, -1);
-                    } else if (potentialNewSequence.length > 1) {
-                        baseTrigger = potentialNewSequence.charAt(0);
-                    }
-                    const baseFidel = baseKeyTriggers[baseTrigger];
-                    if (baseFidel && baseFidel !== lastDisplayedVariationsBase) {
-                        displayVariations(baseFidel);
-                    }
-                    return;
-                }
-
-                if (keySequence.length > 0) {
-                    resolveSequence();
-                }
-
-                if (sequenceMapping.hasOwnProperty(keyForMapping)) {
-                    event.preventDefault();
-                    insertAtCursor(outputTextarea, sequenceMapping[keyForMapping]);
-                    keySequence = '';
-                    return;
-                }
-
-                if (potentialPrefixes.has(keyForMapping)) {
-                    event.preventDefault();
-                    keySequence = keyForMapping;
-                    sequenceTimer = setTimeout(resolveSequence, SEQUENCE_TIMEOUT);
-
-                    const baseFidel = baseKeyTriggers[keyForMapping];
-                    if (baseFidel && baseFidel !== lastDisplayedVariationsBase) {
-                        displayVariations(baseFidel);
-                    }
-                    return;
-                }
-
                 keySequence = '';
-            });
-
-            function initKeyboard() {
-                Object.keys(fidelGroups).forEach(baseKey => {
-                    createKey(baseKey, baseKeysContainer, handleBaseKeyClick);
-                });
-                punctuationVirtual.forEach(punc => {
-                    const puncKey = createKey(punc, punctuationKeysContainer, handleCharKeyClick);
-                    puncKey.addEventListener('click', clearSequenceStateOnly);
-                });
-                symbolsAndEmojis.forEach(item => {
-                    const itemKey = createKey(item, symbolEmojiKeysContainer, handleCharKeyClick);
-                    itemKey.addEventListener('click', clearSequenceStateOnly);
-                });
-                numbersVirtual.forEach(num => {
-                    const numKey = createKey(num, numberKeysContainer, handleCharKeyClick);
-                    numKey.addEventListener('click', clearSequenceStateOnly);
-                });
-                specialKeysVirtual.forEach(keyName => {
-                    const classes = ['key-special'];
-                    if (keyName === 'Space') classes.push('key-space');
-                    if (keyName === 'Backspace') classes.push('key-backspace');
-                    createKey(keyName, specialKeysContainer, handleSpecialKeyClick);
-                });
+                return;
             }
 
-            initKeyboard();
+            // Case 2: Labialized form (e.g., gwa -> ጓ)
+            if (keySequence && newSequence.endsWith('wa')) {
+                 const consonant = newSequence.slice(0, -2);
+                 const baseFidel = physicalKeyMapping[consonant];
+                 const variations = fidelGroups[baseFidel];
+                 if(variations && variations.length > 7) {
+                     insertAtCursor(variations[7]);
+                     keySequence = '';
+                     return;
+                 }
+            }
 
+            // Case 3: The key itself is a direct mapping (e.g., '.', ',')
+            if (physicalKeyMapping[key] && !physicalKeyMapping[newSequence]) {
+                clearSequence(true); // Resolve previous sequence
+                if(physicalKeyMapping[key]) {
+                    const baseFidel = physicalKeyMapping[key];
+                    if(fidelGroups[baseFidel]) { // It's a consonant
+                        keySequence = key;
+                        displayVariations(baseFidel);
+                        sequenceTimer = setTimeout(() => clearSequence(true), SEQUENCE_TIMEOUT);
+                    } else { // It's a direct punctuation
+                        insertAtCursor(baseFidel);
+                        keySequence = '';
+                    }
+                }
+                return;
+            }
+            
+            // Default: It's a new consonant sequence
+            clearSequence(true);
+            keySequence = key;
+            const baseFidel = physicalKeyMapping[keySequence];
+            if (baseFidel && fidelGroups[baseFidel]) {
+                displayVariations(baseFidel);
+                sequenceTimer = setTimeout(() => clearSequence(true), SEQUENCE_TIMEOUT);
+            } else {
+                keySequence = ''; // Invalid sequence
+            }
+        }
+        
+        // --- Initialization ---
+        function init() {
+            // Use a DocumentFragment for performance
+            const fragment = document.createDocumentFragment();
+
+            keyboardLayout.forEach(row => {
+                const rowDiv = document.createElement('div');
+                rowDiv.className = 'keyboard-row';
+                row.forEach(keyChar => {
+                    const keyElement = document.createElement('button');
+                    keyElement.textContent = keyChar;
+                    keyElement.classList.add('key');
+                    keyElement.dataset.key = keyChar; // Use data attributes for clarity
+                    rowDiv.appendChild(keyElement);
+                });
+                fragment.appendChild(rowDiv);
+            });
+            keyboardContainer.appendChild(fragment);
+
+            // Add single, delegated event listener
+            keyboardContainer.addEventListener('click', handleVirtualKeyboardClick);
+            outputTextarea.addEventListener('keydown', handlePhysicalKeyboardDown);
+            
+            // Clear variations when clicking away
             document.addEventListener('click', (event) => {
-                if (!event.target.closest('#keyboard-container') &&
-                    !event.target.closest('#variation-keys') &&
-                    event.target !== outputTextarea) {
-                    clearSequenceStateOnly();
+                if (!keyboardContainer.contains(event.target) && event.target !== outputTextarea) {
                     variationKeysContainer.innerHTML = '';
-                    lastDisplayedVariationsBase = null;
+                    clearSequence();
                 }
             });
+        }
 
-            outputTextarea.addEventListener('blur', () => {
-                setTimeout(() => {
-                    if (!document.activeElement ||
-                        (!document.activeElement.closest('#keyboard-container') &&
-                         !document.activeElement.closest('#variation-keys') &&
-                         document.activeElement !== outputTextarea))
-                    {
-                        clearSequenceStateOnly();
-                        variationKeysContainer.innerHTML = '';
-                        lastDisplayedVariationsBase = null;
-                    }
-                }, 150);
-            });
-
-        });
+        init();
+    });
     </script>
 </body>
 </html>
