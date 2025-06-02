@@ -106,6 +106,8 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            /* flex: 1 1 550px; Removed, parent #keyboard-app handles flex */
+            /* max-width: 700px; Removed, parent #keyboard-app handles flex */
             align-self: stretch; /* Ensure it stretches if parent allows */
         }
 
@@ -169,6 +171,7 @@
         .key[data-key="Space"] {
             flex-grow: 8; /* Make space bar significantly wider */
         }
+        /* Removed .key[data-key="Tab"] as Tab is not in the JS layout */
 
         #variation-keys {
             background-color: #f8f8f8;
@@ -195,6 +198,7 @@
 
         .keyboard-info {
             width: 100%; /* Take full width in its column on mobile, or its flex space */
+            /* max-width: 1200px; /* Max-width handled by .main-layout */
             margin-top: 20px; /* Spacing from the keyboard/textarea area */
             text-align: left;
             font-size: 1em;
@@ -212,6 +216,7 @@
             color: #000;
         }
         .keyboard-info strong {
+            /* font-weight: bold; Redundant, strong is bold by default */
             color: #000;
         }
         .keyboard-info code {
@@ -328,16 +333,14 @@
         </section>
         <textarea id="output" rows="8" placeholder="Type Amharic here... (እዚህ አማርኛ ይጻፉ...)" aria-label="Amharic text input area" lang="am"></textarea>
 
-    </main> 
-    <section class="keyboard-info" aria-labelledby="keyboard-instructions-heading">
+    </main> <section class="keyboard-info" aria-labelledby="keyboard-instructions-heading">
         <h2 id="keyboard-instructions-heading">How to Use</h2>
         <p><strong>Using your physical keyboard:</strong><br>
         Type a consonant (like <code>b</code>) followed by a vowel (<code>e, u, i, a, y, o</code>) to get different forms: <code>be</code> &rarr; በ, <code>bu</code> &rarr; ቡ, <code>bi</code> &rarr; ቢ, <code>ba</code> &rarr; ባ, <code>by</code> &rarr; ቤ, <code>bo</code> &rarr; ቦ.<br>
         Press a consonant key once to get the 6th form (e.g., <code>b</code> &rarr; ብ). For labialized forms, type 'wa' after the consonant (e.g., <code>bwa</code> &rarr; ቧ).
         </p>
-        <p><strong>Special Characters &amp; Punctuation:</strong><br>
-            <code>h</code> &rarr; ሀ, <code>H</code> &rarr; ሐ | <code>s</code> &rarr; ሰ, <code>S</code> &rarr; ሠ | <code>t</code> &rarr; ተ, <code>T</code> &rarr; ጠ | <code>c</code> &rarr; ቸ, <code>C</code> &rarr; ጨ | <code>n</code> &rarr; ነ, <code>N</code> &rarr; ኘ | <code>z</code> &rarr; ዘ, <code>Z</code> &rarr; ዠ<br>
-            <code>/</code> &rarr; ሸ | <code>,</code> &rarr; ፣ | <code>.</code> &rarr; ። | <code>;</code> &rarr; ፤ | <code>:</code> &rarr; ፡ | <code>?</code> &rarr; ? | <code>&lt;</code> &rarr; ፀ | <code>&gt;</code> &rarr; ጸ
+        <p><strong>Special Characters:</strong><br>
+        <code>h</code> &rarr; ሀ, <code>H</code> (Shift+h) &rarr; ሐ | <code>s</code> &rarr; ሰ, <code>S</code> (Shift+s) &rarr; ሠ | <code>t</code> &rarr; ተ, <code>T</code> (Shift+t) &rarr; ጠ | <code>c</code> &rarr; ቸ, <code>C</code> (Shift+c) &rarr; ጨ | <code>n</code> &rarr; ነ, <code>N</code> (Shift+n) &rarr; ኘ | <code>z</code> &rarr; ዘ, <code>Z</code> (Shift+z) &rarr; ዠ | <code>`</code> &rarr; ሸ | <code>.</code> &rarr; ። | <code>,</code> &rarr; ፣ | Shift+. &rarr; ፀ | Shift+, &rarr; ጸ
         </p>
     </section>
 
@@ -378,16 +381,14 @@
             'y': 'የ', 'd': 'ደ', 'j': 'ጀ', 'g': 'ገ', 'f': 'ፈ', 'p': 'ፐ', 'v': 'ቨ',
             'H': 'ሐ', 'S': 'ሠ', 'T': 'ጠ', 'C': 'ጨ', 'N': 'ኘ', 'K': 'ኸ', 'Z': 'ዠ',
             'V': 'ኀ', 'P': 'ጰ', 'X': 'ዐ',
-            
-            // Punctuation and special characters
-            '/': 'ሸ', ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?',
-            '<': 'ፀ', '>': 'ጸ',
+             ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?',
+            '<': 'ፀ', '>': 'ጸ', '/': 'ሸ',
 
-            // Default symbols
+            // Added default symbols
             '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9', '0': '0',
             '-': '-', '=': '=',
-            '!': '!', '@': '@', '#': '#', '<span class="math-inline">'\: '</span>', '%': '%', '^': '^', '&': '&', '*': '*', '(': '(', ')': ')',
-            '_': '_', '+': '+'
+            '!': '!', '@': '@', '#': '#', '$': '$', '%': '%', '^': '^', '&': '&', '*': '*', '(': '(', ')': ')',
+            '_': '_', '+': '+',  ''': ''',   '"': '"',
         };
 
         const vowelMapping = { 'e': 0, 'u': 1, 'i': 2, 'a': 3, 'y': 4, 'o': 6 };
@@ -477,6 +478,8 @@
                 variationKeysContainer.innerHTML = ''; // Clear variations on special key press
             } else if (fidelGroups[key]) { // Is it a base character that has variations?
                 displayVariations(key);
+                 // Optionally insert the first form or 6th form directly
+                 // insertAtCursor(fidelGroups[key][0]); // Example: insert 1st form
             } else { // It's a variation key or a direct punctuation from the main layout
                 insertAtCursor(key);
                 variationKeysContainer.innerHTML = ''; // Clear variations after selection
@@ -484,6 +487,8 @@
         }
 
         function handlePhysicalKeyboardDown(event) {
+            // Prevent default for most keys to avoid typing in textarea directly if we handle it
+            // Exception for Tab, Ctrl+C, Ctrl+V etc.
             if (event.ctrlKey || event.altKey || event.metaKey) {
                  if (event.key.toLowerCase() !== 'v' && event.key.toLowerCase() !== 'c' && event.key.toLowerCase() !== 'a' && event.key.toLowerCase() !== 'x' && event.key.toLowerCase() !== 'z' && event.key.toLowerCase() !== 'y' ) { // allow common shortcuts
                     clearSequence();
@@ -494,6 +499,7 @@
                  clearSequence(true);
                  return; // Allow tabbing
             }
+
 
             const key = event.key;
 
@@ -515,6 +521,8 @@
             event.preventDefault();
             if (sequenceTimer) clearTimeout(sequenceTimer);
 
+            const newSequence = keySequence + key;
+
             // Case 1: Vowel follows a consonant
             if (keySequence && physicalKeyMapping[keySequence] && vowelMapping.hasOwnProperty(key.toLowerCase())) {
                 const baseFidel = physicalKeyMapping[keySequence];
@@ -529,16 +537,17 @@
             }
 
             // Case 2: Labialized form (e.g., gwa -> ጓ)
-            if (keySequence.length === 1 && key.toLowerCase() === 'w') {
-                 keySequence += key.toLowerCase();
-                 sequenceTimer = setTimeout(() => clearSequence(true), SEQUENCE_TIMEOUT);
+            // Check for consonant + 'w' + 'a' sequence
+            if (keySequence.length === 1 && key.toLowerCase() === 'w') { // Consonant + 'w'
+                 keySequence += key.toLowerCase(); // Now keySequence is like 'bw'
+                 sequenceTimer = setTimeout(() => clearSequence(true), SEQUENCE_TIMEOUT); // Wait for 'a' or timeout
                  return;
             }
-            if (keySequence.length === 2 && keySequence.endsWith('w') && key.toLowerCase() === 'a') {
-                const consonant = keySequence.slice(0, -1);
+            if (keySequence.length === 2 && keySequence.endsWith('w') && key.toLowerCase() === 'a') { // Consonant + 'w' + 'a'
+                const consonant = keySequence.slice(0, -1); // Get the base consonant (e.g., 'b' from 'bw')
                 const baseFidel = physicalKeyMapping[consonant];
                 const variations = fidelGroups[baseFidel];
-                if (variations && variations.length > 7 && variations[7]) { 
+                if (variations && variations.length > 7 && variations[7]) { // Labialized is typically the 8th item (index 7)
                     insertAtCursor(variations[7]);
                     keySequence = '';
                     variationKeysContainer.innerHTML = '';
@@ -546,17 +555,18 @@
                 }
             }
 
-            // Case 3: The key itself is a direct mapping or a new consonant
-            clearSequence(true);
 
-            const mappedChar = physicalKeyMapping[key];
+            // Case 3: The key itself is a direct mapping (e.g., '.', ',') or a new consonant
+            clearSequence(true); // Resolve previous consonant if any, then process new key
+
+            const mappedChar = physicalKeyMapping[key]; // Handles shift variants automatically due to 'key' value
             if (mappedChar) {
                 if (fidelGroups[mappedChar]) { // It's a consonant
-                    keySequence = key;
+                    keySequence = key; // Store the original key pressed (e.g. 'h' or 'H')
                     displayVariations(mappedChar);
                     sequenceTimer = setTimeout(() => {
                         clearSequence(true);
-                        variationKeysContainer.innerHTML = '';
+                        variationKeysContainer.innerHTML = ''; // Clear variations on timeout
                     }, SEQUENCE_TIMEOUT);
                 } else { // It's direct punctuation or symbol
                     insertAtCursor(mappedChar);
@@ -564,7 +574,7 @@
                     variationKeysContainer.innerHTML = '';
                 }
             } else {
-                keySequence = '';
+                keySequence = ''; // Invalid sequence start
                 variationKeysContainer.innerHTML = '';
             }
         }
@@ -594,6 +604,7 @@
                 });
                 baseKeysFragment.appendChild(rowDiv);
             });
+            // keyboardContainer already contains variationKeysContainer from HTML
             keyboardContainer.appendChild(baseKeysFragment);
 
 
@@ -603,7 +614,7 @@
             document.addEventListener('click', (event) => {
                 if (!keyboardContainer.contains(event.target) && event.target !== outputTextarea && !variationKeysContainer.contains(event.target)) {
                     variationKeysContainer.innerHTML = '';
-                    clearSequence();
+                    clearSequence(); // Also clear physical key sequence
                 }
             });
 
