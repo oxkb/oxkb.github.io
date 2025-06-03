@@ -16,22 +16,16 @@
     <meta property="og:url" content="https://amkb.vercel.app/">
     <meta property="og:title" content="Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily">
     <meta property="og:description" content="Free online Amharic Fidel keyboard for easy typing in your browser. Supports physical keyboard and virtual key clicks.">
-    <meta property="og:image" content="https://amkb.vercel.app/og-image.png">
-    <meta property="og:locale" content="am_ET">
+    <meta property="og:image" content="https://amkb.vercel.app/og-image.png"> <meta property="og:locale" content="am_ET">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://amkb.vercel.app/">
     <meta property="twitter:title" content="Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily">
     <meta property="twitter:description" content="Free online Amharic Fidel keyboard for easy typing in your browser. Supports physical keyboard and virtual key clicks.">
-    <meta property="twitter:image" content="https://amkb.vercel.app/og-image.png"> <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="google-site-verification" content="FzjlEWszFVraCefC57xc4mhuUwV5EK_tIIHNWTmzmis" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"> <link rel="manifest" href="/site.webmanifest"> 
+     <meta name="google-site-verification" content="FzjlEWszFVraCefC57xc4mhuUwV5EK_tIIHNWTmzmis" />
 
     <script type="application/ld+json">
     {
@@ -58,7 +52,7 @@
     </script>
 
     <style>
-        /* style.css - Consider moving this to an external style.css file for caching */
+        /* style.css */
         body {
             font-family: 'Noto Sans Ethiopic', 'Nyala', sans-serif;
             display: flex;
@@ -80,7 +74,7 @@
 
         h1 {
             color: #333;
-            margin-bottom: 0;
+            margin-bottom: 0; /* Adjusted from 20px as header has margin-bottom */
             text-align: center;
             margin-top: 0;
             font-size: 1.8em;
@@ -97,7 +91,7 @@
         }
         
         #keyboard-app {
-            display: flex;
+            display: flex; /* For internal alignment if needed, currently main-layout handles it */
             flex-direction: column;
             flex: 1 1 550px; /* Allow keyboard app area to grow and shrink */
             max-width: 700px; /* Max width for keyboard area */
@@ -111,8 +105,9 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            /* flex: 1 1 550px; Removed, parent #keyboard-app handles flex */
+            /* max-width: 700px; Removed, parent #keyboard-app handles flex */
             align-self: stretch; /* Ensure it stretches if parent allows */
-            margin-top: 15px; /* Added spacing between textarea and keyboard */
         }
 
         textarea#output { /* More specific selector */
@@ -121,13 +116,12 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             font-family: inherit;
-            flex: 1 1 45%; /* Grow and shrink relative to main-layout */
+            flex: 1 1 45%; /* Grow and shrink relative to keyboard-app */
             min-height: 250px; /* Default minimum height */
             box-sizing: border-box;
             resize: vertical;
             background-color: #fff;
             color: #333;
-            /* No margin-bottom here, rely on gap from main-layout if it's a sibling, or flex order */
         }
 
         .keyboard-row {
@@ -176,6 +170,7 @@
         .key[data-key="Space"] {
             flex-grow: 8; /* Make space bar significantly wider */
         }
+        /* Removed .key[data-key="Tab"] as Tab is not in the JS layout */
 
         #variation-keys {
             background-color: #f8f8f8;
@@ -183,9 +178,9 @@
             border-radius: 5px;
             margin-bottom: 5px;
             min-height: 40px; /* Ensure it has height even when populated */
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
+            display: flex; /* To use gap for its children */
+            flex-wrap: wrap; /* Allow variations to wrap if many */
+            gap: 5px; /* Space between variation keys */
         }
 
         #variation-keys:empty {
@@ -195,21 +190,22 @@
         #variation-keys .key { /* Style for keys within variation container */
             font-size: 1em; /* Slightly smaller for variations */
             padding: 8px 10px;
-            flex-grow: 0;
-            flex-shrink: 0;
+            flex-grow: 0; /* Don't let variation keys grow excessively */
+            flex-shrink: 0; /* Don't let them shrink too much, rely on wrapping */
         }
 
 
         .keyboard-info {
-            width: 100%;
-            margin-top: 20px;
+            width: 100%; /* Take full width in its column on mobile, or its flex space */
+            /* max-width: 1200px; /* Max-width handled by .main-layout */
+            margin-top: 20px; /* Spacing from the keyboard/textarea area */
             text-align: left;
             font-size: 1em;
             color: #333;
-            background-color: #fffacd;
+            background-color: #fffacd; /* Light yellow background */
             padding: 15px;
             border-radius: 8px;
-            border: 1px solid #e0c240;
+            border: 1px solid #e0c240; /* Golden border */
             line-height: 1.6;
             box-sizing: border-box;
         }
@@ -219,6 +215,7 @@
             color: #000;
         }
         .keyboard-info strong {
+            /* font-weight: bold; Redundant, strong is bold by default */
             color: #000;
         }
         .keyboard-info code {
@@ -230,12 +227,12 @@
 
         footer {
             margin-top: 25px;
-            padding: 15px 10px;
+            padding: 15px 10px; /* More padding */
             text-align: center;
             font-size: 0.9em;
             color: #555;
             width: 100%;
-            background-color: #e9e9e9;
+            background-color: #e9e9e9; /* Light grey footer background */
             border-top: 1px solid #ddd;
             box-sizing: border-box;
         }
@@ -260,48 +257,46 @@
             body { padding: 10px; }
             h1 { font-size: 1.5em; }
             .main-layout {
-                flex-direction: column;
-                width: 100%;
+                flex-direction: column; /* Stack elements vertically */
+                width: 100%; /* Use full width */
                 gap: 15px;
             }
             #keyboard-app, textarea#output {
-                flex-basis: auto;
-                width: 100%;
-                max-width: 100%;
-                align-self: auto;
+                flex-basis: auto; /* Reset flex-basis */
+                width: 100%;      /* Full width for stacked items */
+                max-width: 100%; /* Override any previous max-width */
+                align-self: auto; /* Reset self-alignment */
             }
-            textarea#output {
+             textarea#output {
                 min-height: 150px;
                 font-size: 1.3em;
             }
-            #keyboard-container {
-                margin-top: 0; /* Remove top margin when stacked */
-            }
             .key {
                 padding: 8px 10px;
-                font-size: 1em;
+                font-size: 1em; /* Adjust key font size for tablets */
                 min-height: 40px;
             }
             #variation-keys .key {
-                font-size: 0.9em;
-                padding: 6px 8px;
+                 font-size: 0.9em;
+                 padding: 6px 8px;
             }
             .keyboard-info {
                 font-size: 0.9em;
-                margin-top: 15px;
+                margin-top: 15px; /* Adjust top margin */
             }
         }
 
         @media (max-width: 480px) {
             h1 { font-size: 1.3em; }
             .key {
-                font-size: 0.9em;
-                padding: 6px 5px;
-                min-width: 20px;
+                font-size: 0.9em; /* Further reduce key font size for small phones */
+                padding: 6px 5px; /* Adjust padding for smaller keys */
+                min-width: 20px; /* Allow keys to be smaller */
+                gap: 3px; /* Reduce gap between keys */
             }
             #variation-keys .key {
-                font-size: 0.8em;
-                padding: 5px 6px;
+                 font-size: 0.8em;
+                 padding: 5px 6px;
             }
             textarea#output {
                 min-height: 120px;
@@ -312,10 +307,10 @@
                 padding: 10px;
             }
             .keyboard-row {
-                gap: 4px;
+                gap: 4px; /* Reduce gap between keys in a row */
             }
             .key[data-key="Backspace"], .key[data-key="Enter"] {
-                font-size: 0.7em;
+                font-size: 0.7em; /* Adjust font for special keys */
             }
         }
     </style>
@@ -329,22 +324,23 @@
     <main class="main-layout">
         <section id="keyboard-app" aria-labelledby="keyboard-heading">
             <h2 id="keyboard-heading" class="visually-hidden">Amharic Typing Area</h2>
+
             <div id="keyboard-container" role="application" aria-roledescription="Amharic virtual keyboard">
                 <div id="variation-keys" class="keyboard-row" aria-label="Character variations">
                     </div>
                 </div>
         </section>
         <textarea id="output" rows="8" placeholder="Type Amharic here... (እዚህ አማርኛ ይጻፉ...)" aria-label="Amharic text input area" lang="am"></textarea>
-    </main>
-    <section class="keyboard-info" aria-labelledby="keyboard-instructions-heading">
+
+    </main> <section class="keyboard-info" aria-labelledby="keyboard-instructions-heading">
         <h2 id="keyboard-instructions-heading">How to Use your physical keyboard</h2>
-        <p><strong>ይህን ኪቦርድ የሰራሁት በዋናነት ለኮምፒዩተር እና ላፕቶፕ ተጠቃሚዎች ነው!፡ ኪቦርዱ በትክክል እንዲሰራ ፈጠን ብሎ መፃፍ ያስፈልጋል! አንድ ኮንሶናንት ኪይ ከተጫናችሁ በሗላ ወዲያው ቫውሉን መጫን አለባችሁ መዘግየት አያስፈልግም!። ለምሳሌ ልዩ ፊደሎችን እንደ ሸ፣ ፅ፣ ጸ፤ ጨ እና ሌሎችንም ተመሳሳይ ፊደሎችን ለመፃፍ ከታች ያስቀመጥኩትን የኪቦርድ ህግ ተከተሉ!</strong><br>
+        <p><strong> ኪይቦርዱ በትክክል እንዲሰራ ፈጠን ብሎ መፃፍ ያስፈልጋል! አንድ ኮንሶናንት ኪይ ከተጫናችሁ በሗላ ወዲያው ቫውሉን መጫን አለባችሁ መዘግየት አያስፈልግም!</strong><br>
         Type a consonant (like <code>b</code>) followed by a vowel (<code>e, u, i, a, y, o</code>) to get different forms: <code>be</code> &rarr; በ, <code>bu</code> &rarr; ቡ, <code>bi</code> &rarr; ቢ, <code>ba</code> &rarr; ባ, <code>by</code> &rarr; ቤ, <code>bo</code> &rarr; ቦ.<br>
         Press a consonant key once to get the 6th form (e.g., <code>b</code> &rarr; ብ). For labialized forms, type 'wa' after the consonant (e.g., <code>bwa</code> &rarr; ቧ).
         </p>
         <p><strong>Special Characters:</strong><br>
-        <code>h</code> &rarr; ሀ, <code>H</code> (Shift+h) &rarr; ሐ | <code>s</code> &rarr; ሰ, <code>S</code> (Shift+s) &rarr; ሠ | <code>t</code> &rarr; ተ, <code>T</code> (Shift+t) &rarr; ጠ | <code>c</code> &rarr; ቸ, <code>C</code> (Shift+c) &rarr; ጨ | <code>n</code> &rarr; ነ, <code>N</code> (Shift+n) &rarr; ኘ | <code>z</code> &rarr; ዘ, <code>Z</code> (Shift+z) &rarr; ዠ | <code>.</code> &rarr; ። | <code>,</code> &rarr; ፣ | Shift+. &rarr; ፀ | Shift+, &rarr; ጸ
-        | <code>L</code> (Shift+l) &rarr; ሸ, <code>`</code> &rarr; ኀ, <code>~</code> &rarr; ኧ
+        <code>h</code> &rarr; ሀ,   <code>H</code> (Shift+h) &rarr; ሐ |  <code>s</code> &rarr; ሰ, <code>S</code> (Shift+s) &rarr; ሠ | <code>t</code> &rarr; ተ, <code>T</code> (Shift+t) &rarr; ጠ | <code>c</code> &rarr; ቸ, <code>C</code> (Shift+c) &rarr; ጨ | <code>n</code> &rarr; ነ, <code>N</code> (Shift+n) &rarr; ኘ | <code>z</code> &rarr; ዘ, <code>Z</code> (Shift+z) &rarr; ዠ | <code>.</code> &rarr; ። | <code>,</code> &rarr; ፣ | Shift+. &rarr; ፀ | Shift+, &rarr; ጸ
+    |  <code>L</code> (Shift+l) &rarr; ሸ, OR <code>`</code> &rarr; ሸ 
         </p>
     </section>
 
@@ -360,7 +356,7 @@
         const variationKeysContainer = document.getElementById('variation-keys');
 
         const fidelGroups = {
-            'ሀ': ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ', 'ኋ'], 'ለ': ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ', 'ሏ'],
+            'ሀ': ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ'], 'ለ': ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ', 'ሏ'],
             'ሐ': ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ', 'ሗ'], 'መ': ['መ', 'ሙ', 'ሚ', 'ማ', 'ሜ', 'ም', 'ሞ', 'ሟ'],
             'ሠ': ['ሠ', 'ሡ', 'ሢ', 'ሣ', 'ሤ', 'ሥ', 'ሦ', 'ሧ'], 'ረ': ['ረ', 'ሩ', 'ሪ', 'ራ', 'ሬ', 'ር', 'ሮ', 'ሯ'],
             'ሰ': ['ሰ', 'ሱ', 'ሲ', 'ሳ', 'ሴ', 'ስ', 'ሶ', 'ሷ'], 'ሸ': ['ሸ', 'ሹ', 'ሺ', 'ሻ', 'ሼ', 'ሽ', 'ሾ', 'ሿ'],
@@ -368,7 +364,7 @@
             'ቨ': ['ቨ', 'ቩ', 'ቪ', 'ቫ', 'ቬ', 'ቭ', 'ቮ', 'ቯ'], 'ተ': ['ተ', 'ቱ', 'ቲ', 'ታ', 'ቴ', 'ት', 'ቶ', 'ቷ'],
             'ቸ': ['ቸ', 'ቹ', 'ቺ', 'ቻ', 'ቼ', 'ች', 'ቾ', 'ቿ'], 'ኀ': ['ኀ', 'ኁ', 'ኂ', 'ኃ', 'ኄ', 'ኅ', 'ኆ', 'ኋ'],
             'ነ': ['ነ', 'ኑ', 'ኒ', 'ና', 'ኔ', 'ን', 'ኖ', 'ኗ'], 'ኘ': ['ኘ', 'ኙ', 'ኚ', 'ኛ', 'ኜ', 'ኝ', 'ኞ', 'ኟ'],
-            'አ': ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ', 'ኧ'], 'ከ': ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ', 'ኳ'],
+            'አ': ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'], 'ከ': ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ', 'ኳ'],
             'ኸ': ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ', 'ዃ'], 'ወ': ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'],
             'ዐ': ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'], 'ዘ': ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ', 'ዟ'],
             'ዠ': ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ', 'ዧ'], 'የ': ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'],
@@ -385,7 +381,7 @@
             'y': 'የ', 'd': 'ደ', 'j': 'ጀ', 'g': 'ገ', 'f': 'ፈ', 'p': 'ፐ', 'v': 'ቨ',
             'H': 'ሐ', 'S': 'ሠ', 'T': 'ጠ', 'C': 'ጨ', 'N': 'ኘ', 'K': 'ኸ', 'Z': 'ዠ',
             'V': 'ኀ', 'P': 'ጰ', 'X': 'ዐ',
-            '`': 'ኀ',  '~': 'ኧ', ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?',
+            '`': 'ሸ', ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?',
             '<': 'ፀ', '>': 'ጸ',  'L': 'ሸ',
 
             // Added requested symbols
@@ -403,14 +399,14 @@
 
         let keySequence = '';
         let sequenceTimer = null;
-        const SEQUENCE_TIMEOUT = 800; // Reduced timeout for responsiveness
+        const SEQUENCE_TIMEOUT = 1200; // ms
 
         const keyboardLayout = [
             Object.keys(fidelGroups).slice(0, 10),
             Object.keys(fidelGroups).slice(10, 20),
             Object.keys(fidelGroups).slice(20, 30),
             Object.keys(fidelGroups).slice(30),
-            ['@', '#', '፦', '፥', '፧', '፨', 'ኀ', 'ኧ'], // Punctuation row
+            ['ጸ', 'ፀ', '፡', '።', '፣', '፤', '?', '!'], // Reduced punctuation row for space
             ['Backspace', 'Space', 'Enter']
         ];
 
@@ -447,25 +443,19 @@
             if (sequenceTimer) clearTimeout(sequenceTimer);
             sequenceTimer = null;
             if (resolve && keySequence) {
-                // If a consonant was pending and no vowel followed, insert its 6th form
                 const baseChar = physicalKeyMapping[keySequence];
                 if (baseChar && fidelGroups[baseChar] && fidelGroups[baseChar][5]) {
                     insertAtCursor(fidelGroups[baseChar][5]);
-                } else if (physicalKeyMapping[keySequence]) { // For single direct mapped characters like '.'
-                    insertAtCursor(physicalKeyMapping[keySequence]);
                 }
             }
             keySequence = '';
-            variationKeysContainer.innerHTML = ''; // Clear variations when sequence is fully resolved/cleared
+            // Do not clear variation keys here, it might be premature if user is still interacting
         }
 
         function displayVariations(baseFidel) {
             const variations = fidelGroups[baseFidel];
             variationKeysContainer.innerHTML = ''; // Clear previous variations
-            if (!variations) {
-                // If it's a base key with no variations (e.g., some punctuation), hide variations
-                return;
-            }
+            if (!variations) return;
 
             const fragment = document.createDocumentFragment();
             variations.forEach(variation => {
@@ -484,17 +474,16 @@
             const keyElement = event.target.closest('.key');
             if (!keyElement) return;
 
-            clearSequence(); // Clear any pending physical keyboard sequence
+            clearSequence(); // Clear physical keyboard sequence
             const key = keyElement.dataset.key;
 
             if (key === 'Backspace' || key === 'Space' || key === 'Enter') {
                 processSpecialKey(key);
                 variationKeysContainer.innerHTML = ''; // Clear variations on special key press
             } else if (fidelGroups[key]) { // Is it a base character that has variations?
-                // For virtual keyboard, directly insert the 6th form (default consonant)
-                // and then display variations for further selection.
-                insertAtCursor(fidelGroups[key][5]); // Insert the 6th form by default
                 displayVariations(key);
+                 // Optionally insert the first form or 6th form directly
+                 // insertAtCursor(fidelGroups[key][0]); // Example: insert 1st form
             } else { // It's a variation key or a direct punctuation from the main layout
                 insertAtCursor(key);
                 variationKeysContainer.innerHTML = ''; // Clear variations after selection
@@ -502,95 +491,95 @@
         }
 
         function handlePhysicalKeyboardDown(event) {
-            // Allow common shortcuts
+            // Prevent default for most keys to avoid typing in textarea directly if we handle it
+            // Exception for Tab, Ctrl+C, Ctrl+V etc.
             if (event.ctrlKey || event.altKey || event.metaKey) {
-                if (!['c', 'v', 'a', 'x', 'z', 'y', 'f'].includes(event.key.toLowerCase())) { // allow common shortcuts
-                    clearSequence(true); // Resolve any pending sequence if a non-typing shortcut is used
+                 if (event.key.toLowerCase() !== 'v' && event.key.toLowerCase() !== 'c' && event.key.toLowerCase() !== 'a' && event.key.toLowerCase() !== 'x' && event.key.toLowerCase() !== 'z' && event.key.toLowerCase() !== 'y' ) { // allow common shortcuts
+                     clearSequence();
                 }
-                return;
+                return; // Allow browser shortcuts
             }
-            
             if (event.key === 'Tab') {
-                clearSequence(true); // Resolve pending sequence before allowing tab behavior
-                return;
+                 clearSequence(true);
+                 return; // Allow tabbing
             }
+
 
             const key = event.key;
 
             if (key === 'Backspace' || key === 'Enter' || key === ' ') {
-                event.preventDefault(); // Prevent default browser action for these keys
-                clearSequence(true); // Resolve pending sequence first
+                event.preventDefault();
+                clearSequence(true);
                 processSpecialKey(key === ' ' ? 'Space' : key);
                 variationKeysContainer.innerHTML = '';
                 return;
             }
-            
-            // Ignore non-character keys (e.g., F1, Arrow keys, etc.) unless they are modifiers like Shift
-            if (key.length > 1 && key !== 'Shift' && key !== 'Meta' && key !== 'Alt' && key !== 'Control') {
+
+            if (key.length > 1 && key !== 'Shift') { // Ignore navigation/function keys other than shift
                 clearSequence(true);
+                variationKeysContainer.innerHTML = '';
                 return;
             }
-            if (key === 'Shift' || key === 'Meta' || key === 'Alt' || key === 'Control') return; // Shift is a modifier, not a character
+            if (key === 'Shift') return; // Shift is a modifier
 
-            event.preventDefault(); // Prevent default typing behavior for handled keys
+            event.preventDefault();
             if (sequenceTimer) clearTimeout(sequenceTimer);
 
-            // Case 1: Vowel follows a consonant (e.g., 'ba')
-            // Special handling for 'wa' as labialized form
-            if (keySequence.length === 1 && key.toLowerCase() === 'w') {
-                keySequence += key.toLowerCase(); // Sequence is now like 'bw'
-                sequenceTimer = setTimeout(() => clearSequence(true), SEQUENCE_TIMEOUT);
-                return;
-            }
+            const newSequence = keySequence + key;
 
-            if (keySequence.length === 2 && keySequence.endsWith('w') && key.toLowerCase() === 'a') {
-                const consonant = keySequence.slice(0, -1);
-                const baseFidel = physicalKeyMapping[consonant];
-                const variations = fidelGroups[baseFidel];
-                if (variations && variations.length > 7 && variations[7]) { // Labialized is typically the 8th form (index 7)
-                    insertAtCursor(variations[7]);
-                    clearSequence(); // Clear sequence immediately after insertion
-                } else {
-                    // If no labialized form, treat as consonant + w + a (e.g., "ሰዋ")
-                    insertAtCursor(physicalKeyMapping[consonant] + 'ዋ'); // Or whatever the logic for 'wa' should be if not labialized
-                    clearSequence();
-                }
-                return;
-            }
-
-            // Normal consonant + vowel (e.g., 'be', 'bi')
-            if (keySequence.length === 1 && physicalKeyMapping[keySequence] && vowelMapping.hasOwnProperty(key.toLowerCase())) {
+            // Case 1: Vowel follows a consonant
+            if (keySequence && physicalKeyMapping[keySequence] && vowelMapping.hasOwnProperty(key.toLowerCase())) {
                 const baseFidel = physicalKeyMapping[keySequence];
                 const variations = fidelGroups[baseFidel];
                 const vowelIndex = vowelMapping[key.toLowerCase()];
                 if (variations && variations[vowelIndex]) {
                     insertAtCursor(variations[vowelIndex]);
-                } else {
-                    // Fallback: if no direct mapping, insert consonant + vowel
-                    insertAtCursor(baseFidel + key.toLowerCase());
                 }
-                clearSequence(); // Clear sequence immediately after insertion
+                keySequence = '';
+                variationKeysContainer.innerHTML = '';
                 return;
             }
 
-            // Case 2: The key itself is a direct mapping (e.g., '.', ',') or a new consonant
+            // Case 2: Labialized form (e.g., gwa -> ጓ)
+            // Check for consonant + 'w' + 'a' sequence
+            if (keySequence.length === 1 && key.toLowerCase() === 'w') { // Consonant + 'w'
+                 keySequence += key.toLowerCase(); // Now keySequence is like 'bw'
+                 sequenceTimer = setTimeout(() => clearSequence(true), SEQUENCE_TIMEOUT); // Wait for 'a' or timeout
+                 return;
+            }
+            if (keySequence.length === 2 && keySequence.endsWith('w') && key.toLowerCase() === 'a') { // Consonant + 'w' + 'a'
+                const consonant = keySequence.slice(0, -1); // Get the base consonant (e.g., 'b' from 'bw')
+                const baseFidel = physicalKeyMapping[consonant];
+                const variations = fidelGroups[baseFidel];
+                if (variations && variations.length > 7 && variations[7]) { // Labialized is typically the 8th item (index 7)
+                    insertAtCursor(variations[7]);
+                    keySequence = '';
+                    variationKeysContainer.innerHTML = '';
+                    return;
+                }
+            }
+
+
+            // Case 3: The key itself is a direct mapping (e.g., '.', ',') or a new consonant
             clearSequence(true); // Resolve previous consonant if any, then process new key
 
-            const mappedChar = physicalKeyMapping[key];
+            const mappedChar = physicalKeyMapping[key]; // Handles shift variants automatically due to 'key' value
             if (mappedChar) {
                 if (fidelGroups[mappedChar]) { // It's a consonant
                     keySequence = key; // Store the original key pressed (e.g. 'h' or 'H')
                     displayVariations(mappedChar);
                     sequenceTimer = setTimeout(() => {
-                        clearSequence(true); // Resolve to 6th form if no vowel follows
+                        clearSequence(true);
+                        variationKeysContainer.innerHTML = ''; // Clear variations on timeout
                     }, SEQUENCE_TIMEOUT);
-                } else { // It's direct punctuation, number, or other symbol
+                } else { // It's direct punctuation or symbol
                     insertAtCursor(mappedChar);
-                    clearSequence(); // Clear sequence as it's a standalone character
+                    keySequence = '';
+                    variationKeysContainer.innerHTML = '';
                 }
             } else {
-                // If it's an unmapped key, just clear the sequence.
-                clearSequence();
+                keySequence = ''; // Invalid sequence start
+                variationKeysContainer.innerHTML = '';
             }
         }
 
@@ -619,7 +608,7 @@
                 });
                 baseKeysFragment.appendChild(rowDiv);
             });
-            // Append the generated keyboard rows to the keyboardContainer
+            // keyboardContainer already contains variationKeysContainer from HTML
             keyboardContainer.appendChild(baseKeysFragment);
 
 
@@ -627,9 +616,9 @@
             outputTextarea.addEventListener('keydown', handlePhysicalKeyboardDown);
 
             document.addEventListener('click', (event) => {
-                // Clear variations and sequence if click is outside textarea or keyboard
                 if (!keyboardContainer.contains(event.target) && event.target !== outputTextarea && !variationKeysContainer.contains(event.target)) {
-                    clearSequence(true); // Resolve pending sequence and clear variations
+                    variationKeysContainer.innerHTML = '';
+                    clearSequence(); // Also clear physical key sequence
                 }
             });
 
