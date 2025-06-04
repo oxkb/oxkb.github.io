@@ -22,11 +22,10 @@
     <meta property="twitter:url" content="https://amkb.vercel.app/">
     <meta property="twitter:title" content="Online Amharic Keyboard (የአማርኛ ኪቦርድ) - Type Amharic Easily">
     <meta property="twitter:description" content="Free online Amharic Fidel keyboard for easy typing in your browser. Supports physical keyboard and virtual key clicks.">
-    <meta property="twitter:image" content="https://amkb.vercel.app/twitter-image.png"> <link rel="canonical" href="https://amkb.vercel.app/">
-
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png"> <link rel="manifest" href="/site.webmanifest"> <meta name="google-site-verification" content="YOykyV7jEUg5Nj2GeyhHUcewf9WW-Ruyke1v23KePrY" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png"> <link rel="manifest" href="/site.webmanifest"> 
+     <meta name="google-site-verification" content="FzjlEWszFVraCefC57xc4mhuUwV5EK_tIIHNWTmzmis" />
 
     <script type="application/ld+json">
     {
@@ -334,13 +333,14 @@
         <textarea id="output" rows="8" placeholder="Type Amharic here... (እዚህ አማርኛ ይጻፉ...)" aria-label="Amharic text input area" lang="am"></textarea>
 
     </main> <section class="keyboard-info" aria-labelledby="keyboard-instructions-heading">
-        <h2 id="keyboard-instructions-heading">How to Use</h2>
-        <p><strong>Using your physical keyboard:</strong><br>
+        <h2 id="keyboard-instructions-heading">How to Use your physical keyboard</h2>
+        <p><strong>ይህን ኪቦርድ የሰራሁት በዋናነት ለኮምፒዩተር እና ላፕቶፕ ተጠቃሚዎች ነው!፡ ኪቦርዱ በትክክል እንዲሰራ ፈጠን ብሎ መፃፍ ያስፈልጋል! አንድ ኮንሶናንት ኪይ ከተጫናችሁ በሗላ ወዲያው ቫውሉን መጫን አለባችሁ መዘግየት አያስፈልግም!። ለምሳሌ ልዩ ፊደሎችን እንደ ሸ፣ ፅ፣ ጸ፤ ጨ እና ሌሎችንም ተመሳሳይ ፊደሎችን ለመፃፍ ከታች ያስቀመጥኩትን የኪቦርድ ህግ ተከተሉ!</strong><br>
         Type a consonant (like <code>b</code>) followed by a vowel (<code>e, u, i, a, y, o</code>) to get different forms: <code>be</code> &rarr; በ, <code>bu</code> &rarr; ቡ, <code>bi</code> &rarr; ቢ, <code>ba</code> &rarr; ባ, <code>by</code> &rarr; ቤ, <code>bo</code> &rarr; ቦ.<br>
         Press a consonant key once to get the 6th form (e.g., <code>b</code> &rarr; ብ). For labialized forms, type 'wa' after the consonant (e.g., <code>bwa</code> &rarr; ቧ).
         </p>
         <p><strong>Special Characters:</strong><br>
-        <code>h</code> &rarr; ሀ, <code>H</code> (Shift+h) &rarr; ሐ | <code>s</code> &rarr; ሰ, <code>S</code> (Shift+s) &rarr; ሠ | <code>t</code> &rarr; ተ, <code>T</code> (Shift+t) &rarr; ጠ | <code>c</code> &rarr; ቸ, <code>C</code> (Shift+c) &rarr; ጨ | <code>n</code> &rarr; ነ, <code>N</code> (Shift+n) &rarr; ኘ | <code>z</code> &rarr; ዘ, <code>Z</code> (Shift+z) &rarr; ዠ | <code>`</code> &rarr; ሸ | <code>.</code> &rarr; ። | <code>,</code> &rarr; ፣ | Shift+. &rarr; ፀ | Shift+, &rarr; ጸ
+        <code>h</code> &rarr; ሀ,   <code>H</code> (Shift+h) &rarr; ሐ |  <code>s</code> &rarr; ሰ, <code>S</code> (Shift+s) &rarr; ሠ | <code>t</code> &rarr; ተ, <code>T</code> (Shift+t) &rarr; ጠ | <code>c</code> &rarr; ቸ, <code>C</code> (Shift+c) &rarr; ጨ | <code>n</code> &rarr; ነ, <code>N</code> (Shift+n) &rarr; ኘ | <code>z</code> &rarr; ዘ, <code>Z</code> (Shift+z) &rarr; ዠ | <code>.</code> &rarr; ። | <code>,</code> &rarr; ፣ | Shift+. &rarr; ፀ | Shift+, &rarr; ጸ
+    |  <code>L</code> (Shift+l) &rarr; ሸ, <code>`</code> &rarr; ኀ, <code>~</code> &rarr; ኧ
         </p>
     </section>
 
@@ -356,7 +356,7 @@
         const variationKeysContainer = document.getElementById('variation-keys');
 
         const fidelGroups = {
-            'ሀ': ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ'], 'ለ': ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ', 'ሏ'],
+            'ሀ': ['ሀ', 'ሁ', 'ሂ', 'ሃ', 'ሄ', 'ህ', 'ሆ', 'ኋ'], 'ለ': ['ለ', 'ሉ', 'ሊ', 'ላ', 'ሌ', 'ል', 'ሎ', 'ሏ'],
             'ሐ': ['ሐ', 'ሑ', 'ሒ', 'ሓ', 'ሔ', 'ሕ', 'ሖ', 'ሗ'], 'መ': ['መ', 'ሙ', 'ሚ', 'ማ', 'ሜ', 'ም', 'ሞ', 'ሟ'],
             'ሠ': ['ሠ', 'ሡ', 'ሢ', 'ሣ', 'ሤ', 'ሥ', 'ሦ', 'ሧ'], 'ረ': ['ረ', 'ሩ', 'ሪ', 'ራ', 'ሬ', 'ር', 'ሮ', 'ሯ'],
             'ሰ': ['ሰ', 'ሱ', 'ሲ', 'ሳ', 'ሴ', 'ስ', 'ሶ', 'ሷ'], 'ሸ': ['ሸ', 'ሹ', 'ሺ', 'ሻ', 'ሼ', 'ሽ', 'ሾ', 'ሿ'],
@@ -364,7 +364,7 @@
             'ቨ': ['ቨ', 'ቩ', 'ቪ', 'ቫ', 'ቬ', 'ቭ', 'ቮ', 'ቯ'], 'ተ': ['ተ', 'ቱ', 'ቲ', 'ታ', 'ቴ', 'ት', 'ቶ', 'ቷ'],
             'ቸ': ['ቸ', 'ቹ', 'ቺ', 'ቻ', 'ቼ', 'ች', 'ቾ', 'ቿ'], 'ኀ': ['ኀ', 'ኁ', 'ኂ', 'ኃ', 'ኄ', 'ኅ', 'ኆ', 'ኋ'],
             'ነ': ['ነ', 'ኑ', 'ኒ', 'ና', 'ኔ', 'ን', 'ኖ', 'ኗ'], 'ኘ': ['ኘ', 'ኙ', 'ኚ', 'ኛ', 'ኜ', 'ኝ', 'ኞ', 'ኟ'],
-            'አ': ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ'], 'ከ': ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ', 'ኳ'],
+            'አ': ['አ', 'ኡ', 'ኢ', 'ኣ', 'ኤ', 'እ', 'ኦ', 'ኧ'], 'ከ': ['ከ', 'ኩ', 'ኪ', 'ካ', 'ኬ', 'ክ', 'ኮ', 'ኳ'],
             'ኸ': ['ኸ', 'ኹ', 'ኺ', 'ኻ', 'ኼ', 'ኽ', 'ኾ', 'ዃ'], 'ወ': ['ወ', 'ዉ', 'ዊ', 'ዋ', 'ዌ', 'ው', 'ዎ'],
             'ዐ': ['ዐ', 'ዑ', 'ዒ', 'ዓ', 'ዔ', 'ዕ', 'ዖ'], 'ዘ': ['ዘ', 'ዙ', 'ዚ', 'ዛ', 'ዜ', 'ዝ', 'ዞ', 'ዟ'],
             'ዠ': ['ዠ', 'ዡ', 'ዢ', 'ዣ', 'ዤ', 'ዥ', 'ዦ', 'ዧ'], 'የ': ['የ', 'ዩ', 'ዪ', 'ያ', 'ዬ', 'ይ', 'ዮ'],
@@ -381,8 +381,8 @@
             'y': 'የ', 'd': 'ደ', 'j': 'ጀ', 'g': 'ገ', 'f': 'ፈ', 'p': 'ፐ', 'v': 'ቨ',
             'H': 'ሐ', 'S': 'ሠ', 'T': 'ጠ', 'C': 'ጨ', 'N': 'ኘ', 'K': 'ኸ', 'Z': 'ዠ',
             'V': 'ኀ', 'P': 'ጰ', 'X': 'ዐ',
-            '`': 'ሸ', ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?',
-            '<': 'ጸ', '>': 'ፀ',
+            '`': 'ኀ',  '~': 'ኧ', ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?',
+            '<': 'ፀ', '>': 'ጸ',  'L': 'ሸ',
 
             // Added requested symbols
             '/': '/',  // Forward slash
@@ -406,7 +406,7 @@
             Object.keys(fidelGroups).slice(10, 20),
             Object.keys(fidelGroups).slice(20, 30),
             Object.keys(fidelGroups).slice(30),
-            ['ጸ', 'ፀ', '፡', '።', '፣', '፤', '?', '!'], // Reduced punctuation row for space
+            ['@', '#', '፦', '፥', ' ፧', '፨', 'ኀ', 'ኧ'], // Reduced punctuation row for space
             ['Backspace', 'Space', 'Enter']
         ];
 
