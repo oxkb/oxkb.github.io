@@ -381,14 +381,18 @@
             'y': 'የ', 'd': 'ደ', 'j': 'ጀ', 'g': 'ገ', 'f': 'ፈ', 'p': 'ፐ', 'v': 'ቨ',
             'H': 'ሐ', 'S': 'ሠ', 'T': 'ጠ', 'C': 'ጨ', 'N': 'ኘ', 'K': 'ኸ', 'Z': 'ዠ',
             'V': 'ኀ', 'P': 'ጰ', 'X': 'ዐ',
-             ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?',
-            '<': 'ፀ', '>': 'ጸ', '/': 'ሸ',
+            '`': 'ሸ', ',': '፣', '.': '።', ';': '፤', ':': '፡', '?': '?',
+            '<': 'ጸ', '>': 'ፀ',
+
+            // Added requested symbols
+            '/': '/',  // Forward slash
+            '"': '"',  // Double quote
 
             // Added default symbols
             '1': '1', '2': '2', '3': '3', '4': '4', '5': '5', '6': '6', '7': '7', '8': '8', '9': '9', '0': '0',
             '-': '-', '=': '=',
             '!': '!', '@': '@', '#': '#', '$': '$', '%': '%', '^': '^', '&': '&', '*': '*', '(': '(', ')': ')',
-            '_': '_', '+': '+',  ''': ''',   '"': '"',
+            '_': '_', '+': '+'
         };
 
         const vowelMapping = { 'e': 0, 'u': 1, 'i': 2, 'a': 3, 'y': 4, 'o': 6 };
@@ -491,8 +495,8 @@
             // Exception for Tab, Ctrl+C, Ctrl+V etc.
             if (event.ctrlKey || event.altKey || event.metaKey) {
                  if (event.key.toLowerCase() !== 'v' && event.key.toLowerCase() !== 'c' && event.key.toLowerCase() !== 'a' && event.key.toLowerCase() !== 'x' && event.key.toLowerCase() !== 'z' && event.key.toLowerCase() !== 'y' ) { // allow common shortcuts
-                    clearSequence();
-                 }
+                     clearSequence();
+                }
                 return; // Allow browser shortcuts
             }
             if (event.key === 'Tab') {
